@@ -89,9 +89,9 @@ header {
 #contents h2 {
 	clear: both;
 	margin-bottom: 20px;
-	color: #6c6050;		/*文字色*/
+	color: #000000;		/*文字色6c6050*/
 	padding: 10px 20px;	/*上下、左右への余白*/
-	background: #ffe500;	/*背景色*/
+	background: #9ceaff;	/*背景色ffe500*/
 	border-radius: 10px;	/*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
 }
 /*コンテンツのh3タグの設定*/
