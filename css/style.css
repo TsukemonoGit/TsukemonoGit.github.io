@@ -9,7 +9,7 @@
 body {
 	margin: 0px;
 	padding: 0px;
-	-webkit-text-size-adjust: none;
+	/*-webkit-text-size-adjust: none;*/
 	color: #756754;	/*全体の文字色*/
 	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
 	font-size: 16px;	/*文字サイズ*/
