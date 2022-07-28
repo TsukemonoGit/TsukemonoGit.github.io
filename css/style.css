@@ -271,3 +271,8 @@ body {
 .ws,.wl {width: 94%;}
 
 }
+
+/*video*/
+.video{
+	max-width: 100%;
+}
