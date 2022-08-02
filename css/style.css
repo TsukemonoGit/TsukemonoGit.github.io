@@ -276,3 +276,12 @@ body {
 .video{
 	max-width: 100%;
 }
+
+/*ぼーだーらいん
+---------------------------------*/
+
+hr {
+    height: 3px;
+    background-color: #7a6157;
+    border: none;
+}
