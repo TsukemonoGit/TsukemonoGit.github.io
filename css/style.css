@@ -203,6 +203,9 @@ dd {
 	border: 1px solid #999;	/*テーブルの枠線の幅、線種、色*/
 	padding: 10px;			/*テーブル内の余白*/
 }
+.ta1 td{
+	text-align: center;
+}
 /*テーブルの左側ボックス*/
 .ta1 th {
 	text-align: center;	/*センタリング*/
