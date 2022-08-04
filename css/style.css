@@ -123,7 +123,7 @@ header {
 ---------------------------------------------------------------------------*/
 /*各ブロックごとの設定*/
 .list {
-	overflow: hidden;
+	/*overflow: hidden;
 	/*border-bottom: 1px solid #ccc;	下線の幅、線種、色*/
 	padding: 0;	/*ボックス内の余白*/
 	
@@ -141,7 +141,7 @@ header {
 	margin-left: 3%	;/*画像の右側に空けるスペース*/
 	text-align: center;
 	border: inset rgb(190, 162, 162);
-	
+margin-bottom: 5;
 	
 }
 
