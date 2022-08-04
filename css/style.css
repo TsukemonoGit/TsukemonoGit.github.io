@@ -126,11 +126,9 @@ header {
 	overflow: hidden;
 	/*border-bottom: 1px solid #ccc;	下線の幅、線種、色*/
 	padding: 5px;	/*ボックス内の余白*/
+	
 }
-/*h4見出しの設定*/
-.list h4 {
-	color: #799a3a;	/*文字色*/
-}
+
 /*画像の設定*/
 .list p.box {
 	width: 40%;			/*画像幅*/
@@ -138,10 +136,17 @@ header {
 	margin-left: 3%	;/*画像の右側に空けるスペース*/
 	text-align: center;
 	border: inset rgb(190, 162, 162);
+	line-height:0;
+}
+
+.list img{
+	
+	padding: 5 0 5;	/*上、左右、下への余白*/
 }
 /*段落タグ*/
 .list p {
-	padding: 0 !important;
+	padding: 0px 20px 0px;	/*上、左右、下への余白*/
+	/*padding: 0 !important;*/
 }
 
 .box2{
