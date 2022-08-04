@@ -122,7 +122,7 @@ header {
 /*Galleryページ
 ---------------------------------------------------------------------------*/
 /*各ブロックごとの設定*/
-.list,.list1 {
+.list {
 	overflow: hidden;
 	/*border-bottom: 1px solid #ccc;	下線の幅、線種、色*/
 	padding: 5px;	/*ボックス内の余白*/
@@ -132,21 +132,26 @@ header {
 	color: #799a3a;	/*文字色*/
 }
 /*画像の設定*/
-.list img {
-	width: 30%;			/*画像幅*/
-	float: right;		/*画像を左に回り込み*/
-	margin-left: 3%	/*画像の右側に空けるスペース*/
-}
-/*段落タグ*/
-.list p ,.list1 p{
-	padding: 0 !important;
-}
-.list1 img{
+.list p.box {
 	width: 40%;			/*画像幅*/
 	float: right;		/*画像を左に回り込み*/
-	margin-left: 3%	/*画像の右側に空けるスペース*/
+	margin-left: 3%	;/*画像の右側に空けるスペース*/
+	text-align: center;
+}
+/*段落タグ*/
+.list p {
+	padding: 0 !important;
 }
 
+.box2{
+	float : left;
+	width: 60%;
+} 
+.box3 {
+	float: right;
+
+	width: 40%;  /** 横幅50% **/
+	}
 /*フッター(ページ最下部のcopyrightのパーツ)設定
 ---------------------------------------------------------------------------*/
 footer {
