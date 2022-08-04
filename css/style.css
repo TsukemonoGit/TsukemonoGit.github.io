@@ -104,7 +104,7 @@ header {
 	border-radius: 10px;	/*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
 }
 /*コンテンツのp(段落)タグ設定*/
-#contents p {
+#contents p ,.list p{
 	padding: 0px 20px 20px;	/*上、左右、下への余白*/
 }
 /*他。微調整。*/
@@ -126,13 +126,13 @@ header {
 	/*overflow: hidden;
 	/*border-bottom: 1px solid #ccc;	下線の幅、線種、色*/
 	padding: 0;	/*ボックス内の余白*/
+	margin:0;
 	
 }
-/*段落タグ*/
+/*段落タグ
 .list p {
 	padding: 0px 20px 0px;	/*上、左右、下への余白*/
-	/*padding: 0 !important;*/
-}
+	/*padding: 0 !important;**/
 
 /*画像の設定*/
 .list p.box {
