@@ -137,6 +137,7 @@ header {
 	float: right;		/*画像を左に回り込み*/
 	margin-left: 3%	;/*画像の右側に空けるスペース*/
 	text-align: center;
+	border: inset rgb(190, 162, 162);
 }
 /*段落タグ*/
 .list p {
