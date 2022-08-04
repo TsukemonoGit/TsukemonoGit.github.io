@@ -125,8 +125,13 @@ header {
 .list {
 	overflow: hidden;
 	/*border-bottom: 1px solid #ccc;	下線の幅、線種、色*/
-	padding: 5px;	/*ボックス内の余白*/
+	padding: 0;	/*ボックス内の余白*/
 	
+}
+/*段落タグ*/
+.list p {
+	padding: 0px 20px 0px;	/*上、左右、下への余白*/
+	/*padding: 0 !important;*/
 }
 
 /*画像の設定*/
@@ -144,11 +149,7 @@ header {
 	
 	padding: 5 0 0;	/*上、左右、下への余白*/
 }
-/*段落タグ*/
-.list p {
-	padding: 0px 20px 0px;	/*上、左右、下への余白*/
-	/*padding: 0 !important;*/
-}
+
 
 .box2{
 	float : left;
