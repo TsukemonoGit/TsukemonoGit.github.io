@@ -136,12 +136,13 @@ header {
 	margin-left: 3%	;/*画像の右側に空けるスペース*/
 	text-align: center;
 	border: inset rgb(190, 162, 162);
-	line-height:0;
+	
+	
 }
 
 .list img{
 	
-	padding: 5 0 5;	/*上、左右、下への余白*/
+	padding: 5 0 0;	/*上、左右、下への余白*/
 }
 /*段落タグ*/
 .list p {
