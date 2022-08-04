@@ -125,7 +125,7 @@ header {
 .list,.list1 {
 	overflow: hidden;
 	/*border-bottom: 1px solid #ccc;	下線の幅、線種、色*/
-	padding: 20px;	/*ボックス内の余白*/
+	padding: 5px;	/*ボックス内の余白*/
 }
 /*h4見出しの設定*/
 .list h4 {
@@ -135,7 +135,7 @@ header {
 .list img {
 	width: 30%;			/*画像幅*/
 	float: right;		/*画像を左に回り込み*/
-	margin-right: 3%	/*画像の右側に空けるスペース*/
+	margin-left: 3%	/*画像の右側に空けるスペース*/
 }
 /*段落タグ*/
 .list p ,.list1 p{
@@ -144,7 +144,7 @@ header {
 .list1 img{
 	width: 40%;			/*画像幅*/
 	float: right;		/*画像を左に回り込み*/
-	margin-right: 3%	/*画像の右側に空けるスペース*/
+	margin-left: 3%	/*画像の右側に空けるスペース*/
 }
 
 /*フッター(ページ最下部のcopyrightのパーツ)設定
