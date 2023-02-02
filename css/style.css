@@ -46,6 +46,7 @@ a:hover {
 /*げーむ説明欄の設定 border-bottom: solid 1px #ccc;
 ---------------------------------------------------------------------------*/
 .table-txt {
+	
 	border: solid 1px #ccc;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -85,5 +86,13 @@ h3.waku {
 	border: solid 3px #aecaff;
 	border-radius: 20px;
 
-
+}
+/*日付
+--------------------------------------------------------------------------*/
+.date{
+	margin-left: 5px;
+	margin-right: 5px;
+	display: inline-block;
+	color:#838383;
+	font-size: smaller;
 }
