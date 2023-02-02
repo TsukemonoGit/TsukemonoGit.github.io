@@ -30,13 +30,71 @@ a:hover {
 	/*マウスオン時の文字色*/
 }
 
+/*たいとる
+---------------------------------------------------------------------------*/
+h2 {
+	display: inline-block;
+	margin: 3px;
+	margin-top: 7px;
+	padding: 20px;
+	padding-bottom: 15px;
+	padding-left: 40px;
+	padding-right: 40px;
+	background-color: #b4d7ff;
+
+	border-radius: 30px;
+}
+
+
+/*タイトルっぽいとこの背景つくる
+--------------------------------------------------------------------------*/
+h3.waku {
+	/*margin: 3px;
+	margin-top: 7px;
+	padding: 10px;
+	padding-bottom: 5px;
+
+	border: solid 3px #aecaff;
+	border-radius: 20px;
+*/
+	text-shadow: 1px 1px 2px silver;
+	border-left: solid 8px #2737c7;
+	border-bottom: solid 2px #2737c7;
+	padding: 10px;
+	padding-bottom: 5px;
+
+}
+
+/*日付
+--------------------------------------------------------------------------*/
+.date {
+	margin-left: 5px;
+	margin-right: 5px;
+	display: inline-block;
+	color: #838383;
+	font-size: smaller;
+}
+
+/*注釈*/
+sub {
+	vertical-align: top;
+	font-size: xx-small;
+}
+
+
 /*ゲームタイトルの最初にマークを付ける
 --------------------------------------------------------------------------*/
 #gametitle:before {
 	content: "🎮";
 }
 
-/*げーむあいこんの設定
+/*ソフトタイトルの最初にマークを付ける
+--------------------------------------------------------------------------*/
+#softtitle:before {
+	content: "💻";
+}
+
+/*げーむ、ソフトあいこんの設定
 ---------------------------------------------------------------------------*/
 .table-img {
 	border: solid 1px #ccc;
@@ -44,29 +102,16 @@ a:hover {
 	padding: 5px;
 }
 
-/*げーむ説明欄の設定 border-bottom: solid 1px #ccc;
+/*げーむ。ソフト説明欄の設定 border-bottom: solid 1px #ccc;
 ---------------------------------------------------------------------------*/
 .table-txt {
-	
+
 	border: solid 1px #ccc;
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
-/*たいとる
----------------------------------------------------------------------------*/
-h1 {
-	display: inline-block;
-	margin: 3px;
-	margin-top: 7px;
-	padding: 10px;
-	padding-bottom: 5px;
-	padding-left: 20px;
-	padding-right: 20px;
-	background-color: #b4ceff;
 
-	border-radius: 30px;
-}
 
 #saku {
 	font-size: small;
@@ -74,26 +119,4 @@ h1 {
 
 	margin-top: -8px;
 	color: #838383;
-}
-
-/*タイトルっぽいとこの背景つくる
---------------------------------------------------------------------------*/
-h3.waku {
-	margin: 3px;
-	margin-top: 7px;
-	padding: 10px;
-	padding-bottom: 5px;
-
-	border: solid 3px #aecaff;
-	border-radius: 20px;
-
-}
-/*日付
---------------------------------------------------------------------------*/
-.date{
-	margin-left: 5px;
-	margin-right: 5px;
-	display: inline-block;
-	color:#838383;
-	font-size: smaller;
 }
