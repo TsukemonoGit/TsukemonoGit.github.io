@@ -5,38 +5,84 @@
 /*全体の設定
 ---------------------------------------------------------------------------*/
 body {
-	
-	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
-	font-size: 16px;	/*文字サイズ*/
-	line-height: 2;		/*行間*/
-	background: #ffffff;	/*背景色f7f5e2*/
+
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	/*フォント種類*/
+	font-size: 16px;
+	/*文字サイズ*/
+	line-height: 2;
+	/*行間*/
+	background: #ffffff;
+	/*背景色f7f5e2*/
 }
+
 /*リンク（全般）設定
 ---------------------------------------------------------------------------*/
 a {
-	color: #15adad;	/*リンクテキストの色*/
-	transition: 0.3s;	/*マウスオン時の移り変わるまでの時間設定。0.3秒。*/
+	color: #15adad;
+	/*リンクテキストの色*/
+	transition: 0.3s;
+	/*マウスオン時の移り変わるまでの時間設定。0.3秒。*/
 }
+
 a:hover {
-	color: #799a3a;	/*マウスオン時の文字色*/
+	color: #799a3a;
+	/*マウスオン時の文字色*/
 }
 
 /*ゲームタイトルの最初にマークを付ける
 --------------------------------------------------------------------------*/
 #gametitle:before {
-    content: "🎮";
-    }
+	content: "🎮";
+}
 
 /*げーむあいこんの設定
 ---------------------------------------------------------------------------*/
-.table-img{
-    border: solid 1px #ccc;  
-    text-align: center;
+.table-img {
+	border: solid 1px #ccc;
+	text-align: center;
 }
 
 /*げーむ説明欄の設定 border-bottom: solid 1px #ccc;
 ---------------------------------------------------------------------------*/
-.table-txt{
-    border: solid 1px #ccc;
-    padding-left: 10px;
+.table-txt {
+	border: solid 1px #ccc;
+	padding-left: 10px;
+}
+
+/*たいとる
+---------------------------------------------------------------------------*/
+h1 {
+	display: inline-block;
+	margin: 3px;
+	margin-top: 7px;
+	padding: 10px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #b4ceff;
+
+	border-radius: 30px;
+}
+
+#saku {
+	font-size: small;
+	text-align: right;
+
+	margin-top: -8px;
+	color: #838383;
+}
+
+/*タイトルっぽいとこの背景つくる
+--------------------------------------------------------------------------*/
+h3.waku {
+	margin: 3px;
+	margin-top: 7px;
+	padding: 10px;
+	padding-bottom: 5px;
+
+	border: solid 3px #aecaff;
+	border-radius: 20px;
+
+
 }
