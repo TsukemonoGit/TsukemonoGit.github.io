@@ -5,10 +5,7 @@
 /*全体の設定
 ---------------------------------------------------------------------------*/
 body {
-	margin: 0px;
-	padding: 0px;
-	/*-webkit-text-size-adjust: none;*/
-	color: #494136;	/*全体の文字色*/
+	
 	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
 	font-size: 16px;	/*文字サイズ*/
 	line-height: 2;		/*行間*/
@@ -30,4 +27,16 @@ a:hover {
     content: "🎮";
     }
 
+/*げーむあいこんの設定
+---------------------------------------------------------------------------*/
+.table-img{
+    border: solid 1px #ccc;  
+    text-align: center;
+}
 
+/*げーむ説明欄の設定 border-bottom: solid 1px #ccc;
+---------------------------------------------------------------------------*/
+.table-txt{
+    border: solid 1px #ccc;
+    padding-left: 10px;
+}
