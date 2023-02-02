@@ -41,6 +41,7 @@ a:hover {
 .table-img {
 	border: solid 1px #ccc;
 	text-align: center;
+	padding: 5px;
 }
 
 /*げーむ説明欄の設定 border-bottom: solid 1px #ccc;
