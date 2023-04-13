@@ -128,3 +128,10 @@ sub {
 	margin-top: -8px;
 	color: #838383;
 }
+
+
+.sonota {
+	padding-left: 10px;
+	margin-bottom: -10px;
+	font-weight: bold;
+	}
