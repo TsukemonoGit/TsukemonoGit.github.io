@@ -7,6 +7,6 @@
       "mono_gazo":"f987fb90696fcb09358629aeebf5156ea05a405101c4f2d9020bf02f47ea4a49"
     },
     "relays": {
-    "84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5": [ "wss://yabu.me","wss://nos.lol" ]
+    "84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5": [ "wss://yabu.me","wss://nos.lol","wss://nostr.fediverse.jp","wss://relay.nostr.wirednet.jp" ]
   }
   }
