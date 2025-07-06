@@ -1,0 +1,678 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { works as games } from "../data/games.ts";
+import { works as nostrTools } from "../data/nostr.ts";
+import { mentions } from "../data/media.ts";
+import { links } from "../data/links.ts";
+import { fanActivities } from "../data/fan.ts";
+import WorkCard from "../components/WorkCard.astro";
+import type { Data } from "../data/works";
+import type { FanActivity } from "../data/fan.ts";
+
+// カテゴリ別のアイテム数を計算
+const categoryStats = {
+  games: games.length,
+  nostrTools: nostrTools.length,
+  fanActivities: fanActivities.length,
+  mentions: mentions.length,
+  links: links.length,
+};
+---
+
+<Layout>
+  <div
+    class="min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-base-300"
+  >
+    <!-- モバイル用メニューボタン -->
+    <div class="lg:hidden fixed top-4 left-4 z-50">
+      <button
+        id="mobile-menu-toggle"
+        class="btn btn-circle btn-primary shadow-lg"
+      >
+        <svg
+          id="menu-icon"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg
+          id="close-icon"
+          class="w-6 h-6 hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- サイドメニューオーバーレイ -->
+    <div
+      id="sidebar-overlay"
+      class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden"
+    >
+    </div>
+
+    <!-- サイドメニュー -->
+    <aside
+      id="sidebar"
+      class="fixed left-0 top-0 h-full w-80 bg-base-100 shadow-2xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-50 lg:z-10 border-r border-base-300"
+    >
+      <div class="p-6 h-full flex flex-col">
+        <!-- ヘッダー -->
+        <div class="mb-8">
+          <h1 class="text-3xl font-black text-primary mb-2">tsukemonogit</h1>
+          <p class="text-base-content/70 text-sm">
+            ゲーム開発・Nostrツール・ファン活動
+          </p>
+        </div>
+
+        <!-- ナビゲーション -->
+        <nav class="flex-1 space-y-2">
+          <a
+            href="#overview"
+            class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-base-200 transition-colors"
+          >
+            <span class="text-xl">📊</span>
+            <span class="font-medium">概要</span>
+          </a>
+
+          <a
+            href="#games"
+            class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-base-200 transition-colors"
+          >
+            <span class="text-xl">🎮</span>
+            <div class="flex-1">
+              <span class="font-medium">ゲーム作品</span>
+              <div class="badge badge-primary badge-sm ml-2">
+                {categoryStats.games}
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="#nostr"
+            class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-base-200 transition-colors"
+          >
+            <span class="text-xl">⚡</span>
+            <div class="flex-1">
+              <span class="font-medium">Nostrツール</span>
+              <div class="badge badge-secondary badge-sm ml-2">
+                {categoryStats.nostrTools}
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="#fan"
+            class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-base-200 transition-colors"
+          >
+            <span class="text-xl">💗</span>
+            <div class="flex-1">
+              <span class="font-medium">ファン活動</span>
+              <div class="badge badge-accent badge-sm ml-2">
+                {categoryStats.fanActivities}
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="#media"
+            class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-base-200 transition-colors"
+          >
+            <span class="text-xl">📰</span>
+            <div class="flex-1">
+              <span class="font-medium">メディア掲載</span>
+              <div class="badge badge-info badge-sm ml-2">
+                {categoryStats.mentions}
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="#links"
+            class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-base-200 transition-colors"
+          >
+            <span class="text-xl">🔗</span>
+            <div class="flex-1">
+              <span class="font-medium">SNS・プラットフォーム</span>
+              <div class="badge badge-warning badge-sm ml-2">
+                {categoryStats.links}
+              </div>
+            </div>
+          </a>
+        </nav>
+
+        <!-- フッター -->
+        <div class="mt-auto pt-4 border-t border-base-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
+            >
+              <span class="text-sm font-bold text-white">T</span>
+            </div>
+            <span class="text-sm font-medium">tsukemonogit</span>
+          </div>
+
+          <!-- テーマ切り替えボタン -->
+          <button id="theme-toggle" class="btn btn-ghost btn-block gap-2">
+            <svg
+              id="theme-icon-sun"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"
+              ></path>
+            </svg>
+            <svg
+              id="theme-icon-moon"
+              class="w-5 h-5 hidden"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"
+              ></path>
+            </svg>
+            <span id="theme-text">ライトモード</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- メインコンテンツ -->
+    <main class="lg:ml-80 min-h-screen">
+      <!-- 概要セクション -->
+      <section id="overview" class="py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+          <div
+            class="hero bg-gradient-to-br from-primary to-secondary text-primary-content rounded-2xl shadow-2xl relative overflow-hidden"
+          >
+            <div class="hero-overlay bg-black/10 rounded-2xl"></div>
+            <div class="hero-content text-center py-16">
+              <div class="max-w-2xl">
+                <h1 class="text-5xl font-black mb-6 text-white drop-shadow-2xl">
+                  Welcome to My Portfolio
+                </h1>
+                <p class="text-xl text-white/90 leading-relaxed">
+                  ゲーム開発・Nostrツール・ファン活動の総合ポートフォリオ
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 統計ダッシュボード -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+            <div class="stat bg-base-100 rounded-xl shadow-lg p-6 text-center">
+              <div class="stat-figure text-primary mb-2">
+                <span class="text-3xl">🎮</span>
+              </div>
+              <div class="stat-value text-primary text-3xl font-bold">
+                {categoryStats.games}
+              </div>
+              <div class="stat-title text-sm">ゲーム作品</div>
+            </div>
+
+            <div class="stat bg-base-100 rounded-xl shadow-lg p-6 text-center">
+              <div class="stat-figure text-secondary mb-2">
+                <span class="text-3xl">⚡</span>
+              </div>
+              <div class="stat-value text-secondary text-3xl font-bold">
+                {categoryStats.nostrTools}
+              </div>
+              <div class="stat-title text-sm">Nostrツール</div>
+            </div>
+
+            <div class="stat bg-base-100 rounded-xl shadow-lg p-6 text-center">
+              <div class="stat-figure text-accent mb-2">
+                <span class="text-3xl">💗</span>
+              </div>
+              <div class="stat-value text-accent text-3xl font-bold">
+                {categoryStats.fanActivities}
+              </div>
+              <div class="stat-title text-sm">ファン活動</div>
+            </div>
+
+            <div class="stat bg-base-100 rounded-xl shadow-lg p-6 text-center">
+              <div class="stat-figure text-info mb-2">
+                <span class="text-3xl">📰</span>
+              </div>
+              <div class="stat-value text-info text-3xl font-bold">
+                {categoryStats.mentions}
+              </div>
+              <div class="stat-title text-sm">メディア掲載</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ゲーム作品セクション -->
+      <section id="games" class="py-12 px-4 bg-base-200/50">
+        <div class="container mx-auto max-w-6xl">
+          <div class="section-header mb-8">
+            <div class="flex items-center gap-4">
+              <span class="text-4xl">🎮</span>
+              <div>
+                <h2 class="text-4xl font-bold text-base-content">ゲーム作品</h2>
+                <p class="text-base-content/60">
+                  制作したゲームとインタラクティブコンテンツ
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {
+              games.map((work, index) => (
+                <div
+                  class="animate-fade-in"
+                  style={`animation-delay: ${index * 0.1}s`}
+                >
+                  <WorkCard {...work} />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Nostrツールセクション -->
+      <section id="nostr" class="py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+          <div class="section-header mb-8">
+            <div class="flex items-center gap-4">
+              <span class="text-4xl">⚡</span>
+              <div>
+                <h2 class="text-4xl font-bold text-base-content">
+                  Nostr関連ツール
+                </h2>
+                <p class="text-base-content/60">
+                  分散型プロトコル向けアプリケーション
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {
+              nostrTools.map((work, index) => (
+                <div
+                  class="animate-fade-in"
+                  style={`animation-delay: ${index * 0.1}s`}
+                >
+                  <WorkCard {...work} />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- ファン活動セクション -->
+      <section id="fan" class="py-12 px-4 bg-base-200/50">
+        <div class="container mx-auto max-w-6xl">
+          <div class="section-header mb-8">
+            <div class="flex items-center gap-4">
+              <span class="text-4xl">💗</span>
+              <div>
+                <h2 class="text-4xl font-bold text-base-content">ファン活動</h2>
+                <p class="text-base-content/60">
+                  カシヲさん関連コンテンツの制作・支援
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {
+              fanActivities.map((activity: FanActivity, index) => (
+                <div
+                  class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 animate-fade-in"
+                  style={`animation-delay: ${index * 0.1}s`}
+                >
+                  <div class="card-body">
+                    <h3 class="card-title text-xl font-bold">
+                      {activity.title}
+                    </h3>
+                    <p class="text-base-content/70 leading-relaxed">
+                      {activity.description}
+                    </p>
+                    <div class="card-actions justify-end mt-4">
+                      {activity.url ? (
+                        <a
+                          href={activity.url}
+                          class="btn btn-accent btn-sm gap-2"
+                        >
+                          <span>{activity.linkText || activity.title}</span>
+                          <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                            />
+                          </svg>
+                        </a>
+                      ) : (
+                        <div class="flex flex-wrap gap-2">
+                          {activity.tags?.map((tag: unknown) => (
+                            <div class="badge badge-accent badge-outline">
+                              {tag}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- メディア掲載セクション -->
+      <section id="media" class="py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+          <div class="section-header mb-8">
+            <div class="flex items-center gap-4">
+              <span class="text-4xl">📰</span>
+              <div>
+                <h2 class="text-4xl font-bold text-base-content">
+                  メディア掲載・紹介記事
+                </h2>
+                <p class="text-base-content/60">
+                  外部メディアでの紹介・掲載実績
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {
+              mentions.map((mention, index) => (
+                <div
+                  class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 animate-fade-in"
+                  style={`animation-delay: ${index * 0.1}s`}
+                >
+                  <div class="card-body">
+                    <h3 class="card-title text-xl font-bold line-clamp-2">
+                      {mention.title}
+                    </h3>
+                    <p class="text-info font-medium text-sm">{mention.site}</p>
+                    <div class="card-actions justify-end mt-4">
+                      <a
+                        href={mention.url}
+                        target="_blank"
+                        class="btn btn-info btn-sm gap-2"
+                      >
+                        <span>記事を読む</span>
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- SNS・プラットフォームセクション -->
+      <section id="links" class="py-12 px-4 bg-base-200/50">
+        <div class="container mx-auto max-w-6xl">
+          <div class="section-header mb-8">
+            <div class="flex items-center gap-4">
+              <span class="text-4xl">🔗</span>
+              <div>
+                <h2 class="text-4xl font-bold text-base-content">
+                  他SNS・プラットフォーム
+                </h2>
+                <p class="text-base-content/60">
+                  各種プラットフォームでの活動拠点
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+          >
+            {
+              links.map((link, index) => (
+                <a
+                  href={link.url}
+                  target="_blank"
+                  class="btn btn-outline btn-lg h-auto p-6 flex-col gap-3 hover:scale-105 transition-all duration-300 animate-fade-in"
+                  style={`animation-delay: ${index * 0.1}s`}
+                >
+                  <div class="text-3xl">
+                    {link.name === "GitHub"
+                      ? "🐙"
+                      : link.name === "Twitter"
+                        ? "🐦"
+                        : link.name === "YouTube"
+                          ? "📺"
+                          : link.name === "Pixiv"
+                            ? "🎨"
+                            : link.name === "Discord"
+                              ? "💬"
+                              : "🔗"}
+                  </div>
+                  <span class="text-sm font-semibold">{link.name}</span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <style>
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .nav-link.active {
+      background-color: oklch(var(--p) / 0.1);
+      color: oklch(var(--p));
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* スムーズスクロール */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* セクション間のスペース調整 */
+    section {
+      scroll-margin-top: 2rem;
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 1024px) {
+      #sidebar {
+        width: 320px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+
+  <script>
+    // サイドバーとメニューの制御
+    const sidebar = document.getElementById("sidebar");
+    const sidebarOverlay = document.getElementById("sidebar-overlay");
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // モバイルメニューの切り替え
+    mobileMenuToggle?.addEventListener("click", () => {
+      const isOpen = sidebar?.classList.contains("translate-x-0");
+
+      if (isOpen) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+
+    // オーバーレイクリックで閉じる
+    sidebarOverlay?.addEventListener("click", closeSidebar);
+
+    // サイドバーを開く
+    function openSidebar() {
+      sidebar?.classList.remove("-translate-x-full");
+      sidebar?.classList.add("translate-x-0");
+      sidebarOverlay?.classList.remove("hidden");
+      menuIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+    }
+
+    // サイドバーを閉じる
+    function closeSidebar() {
+      sidebar?.classList.add("-translate-x-full");
+      sidebar?.classList.remove("translate-x-0");
+      sidebarOverlay?.classList.add("hidden");
+      menuIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+    }
+
+    // ナビゲーションリンクのクリック時
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        // モバイルでサイドバーを閉じる
+        if (window.innerWidth < 1024) {
+          closeSidebar();
+        }
+
+        // アクティブ状態を更新
+        navLinks.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    // スクロール時のアクティブリンク更新
+    const sections = document.querySelectorAll("section[id]");
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          const activeLink = document.querySelector(`a[href="#${id}"]`);
+
+          navLinks.forEach((link) => link.classList.remove("active"));
+          activeLink?.classList.add("active");
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
+
+    // テーマ切り替え機能
+    const themeToggle = document.getElementById("theme-toggle");
+    const sunIcon = document.getElementById("theme-icon-sun");
+    const moonIcon = document.getElementById("theme-icon-moon");
+    // const themeText = document.getElementById("theme-text");
+
+    // 初期テーマの設定
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    updateThemeIcon(savedTheme);
+
+    // テーマ切り替えイベント
+    themeToggle?.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    // アイコン更新関数
+    function updateThemeIcon(theme: string) {
+      if (theme === "dark") {
+        sunIcon?.classList.add("hidden");
+        moonIcon?.classList.remove("hidden");
+        // themeText.textContent = "ダークモード";
+      } else {
+        sunIcon?.classList.remove("hidden");
+        moonIcon?.classList.add("hidden");
+        // themeText.textContent = "ライトモード";
+      }
+    }
+
+    // リサイズ時の処理
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) {
+        closeSidebar();
+      }
+    });
+  </script>
+</Layout>
