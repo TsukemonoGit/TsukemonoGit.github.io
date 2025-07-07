@@ -23,6 +23,8 @@ export interface Work {
 	url?: string;
 	tags?: string[]; // i18nキー or 固定表示
 	emoji?: string;
+	icon?: string;
+	colorClass?: string;
 }
 
 // カテゴリ別のアイテム数を計算

@@ -16,7 +16,7 @@
 >
 	<!-- Header -->
 	<header
-		class="bg-surface-100 flex aspect-[21/9] w-full items-center justify-center overflow-hidden"
+		class="bg-surface-100-900 flex aspect-[21/9] w-full items-center justify-center overflow-hidden"
 	>
 		{#if image}
 			<img src={image} class="h-full w-full object-cover" alt="banner" />
@@ -27,7 +27,7 @@
 	</header>
 
 	<!-- Article -->
-	<article class="space-y-4 p-6">
+	<article class="min-h-[180px] space-y-4 p-6">
 		<div>
 			<h3 class="mb-2 text-xl font-bold text-slate-800 dark:text-slate-100">{$t(titleKey)}</h3>
 		</div>
@@ -44,7 +44,7 @@
 	</article>
 
 	<!-- Footer -->
-	<footer class="px-6 pb-6">
+	<footer class="min-h-[48px] px-6 pb-6">
 		<div class="flex flex-row-reverse">
 			<span class="btn preset-filled-primary-500 text-primary text-sm font-medium">
 				{$t(`${category}.${id}.link_text`, 'common.view')}
