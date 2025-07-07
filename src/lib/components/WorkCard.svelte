@@ -1,10 +1,9 @@
-<!-- Card.svelte -->
 <script lang="ts">
 	import type { Work } from '$lib/data/state';
 	import { t } from '@konemono/svelte5-i18n';
 
 	type Props = Work & { category: string };
-	let { category, id, url, image, tags = [] }: Props = $props();
+	let { category, id, url, image, tags = [], date }: Props = $props(); // ← dateを追加
 
 	const titleKey = `${category}.${id}.title`;
 	const descriptionKey = `${category}.${id}.description`;
@@ -21,7 +20,7 @@
 		{#if image}
 			<img src={image} class="h-full w-full object-cover" alt="banner" />
 		{:else}
-			<!-- 画像がない場合のプレースホルダー（SVGやアイコンでも可）-->
+			<!-- 画像がない場合のプレースホルダー -->
 			<span class="text-sm text-slate-400">No image available</span>
 		{/if}
 	</header>
@@ -31,9 +30,11 @@
 		<div>
 			<h3 class="mb-2 text-xl font-bold text-slate-800 dark:text-slate-100">{$t(titleKey)}</h3>
 		</div>
+
 		<p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
 			{$t(descriptionKey)}
 		</p>
+
 		{#if tags.length > 0}
 			<div class="mt-3 flex flex-wrap gap-2">
 				{#each tags as tag}
@@ -44,11 +45,11 @@
 	</article>
 
 	<!-- Footer -->
-	<footer class="min-h-[48px] px-6 pb-6">
-		<div class="flex flex-row-reverse">
-			<span class="btn preset-filled-primary-500 text-primary text-sm font-medium">
-				{$t(`${category}.${id}.link_text`, 'common.view')}
-			</span>
-		</div>
-	</footer>
-</a>
+
+	<footer class="flex min-h-[48px] items-center justify-between gap-4 px-6 py-4">
+		<small class="opacity-60">{date}</small>
+		<span class="btn preset-filled-primary-500 text-primary text-sm font-medium">
+			{$t(`${category}.${id}.link_text`, 'common.view')}
+		</span>
+	</footer></a
+>

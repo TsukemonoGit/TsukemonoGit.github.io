@@ -10,35 +10,36 @@
 </script>
 
 {#each categoryData as category}
-	{@const Icon = icons[category.icon as keyof typeof icons] ?? null}
-	<section id={category.id} class="bg-base-200/50 px-4 py-12">
-		<div class="container mx-auto max-w-6xl">
-			<div class="section-header mb-8">
-				<div class="flex items-center gap-4">
-					{#if Icon}
-						<Icon class={`h-12 w-12 ${category.iconColorClass}`} />{/if}
-					<div>
-						<h2 class="text-base-content text-4xl font-bold">{$t(`${category.id}.title`)}</h2>
-						<p class="text-base-content/60">{$t(`${category.id}.description`)}</p>
+	{#if category.id !== 'overview'}
+		{@const Icon = icons[category.icon as keyof typeof icons] ?? null}
+		<section id={category.id} class="bg-base-200/50 px-4 py-12">
+			<div class="container mx-auto max-w-6xl">
+				<div class="section-header mb-8">
+					<div class="flex items-center gap-4">
+						{#if Icon}
+							<Icon class={`h-12 w-12 ${category.iconColorClass}`} />{/if}
+						<div>
+							<h2 class="text-base-content text-4xl font-bold">{$t(`${category.id}.title`)}</h2>
+							<p class="text-base-content/60">{$t(`${category.id}.description`)}</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-				{#if category.id === 'links'}
-					{#each category.items as work, index}
-						<LinkCard {work} />
-					{/each}
-				{:else}
-					{#each category.items as work, index}
-						<div class="animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
-							<WorkCard category={category.id} {...work} />
-						</div>
-					{/each}
-				{/if}
+				<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+					{#if category.id === 'links'}
+						{#each category.items as work, index}
+							<LinkCard {work} />
+						{/each}
+					{:else}
+						{#each category.items as work, index}
+							<div class="animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+								<WorkCard category={category.id} {...work} />
+							</div>
+						{/each}
+					{/if}
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>{/if}
 {/each}
 
 <style>

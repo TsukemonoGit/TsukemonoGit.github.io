@@ -24,6 +24,7 @@ export interface Work {
 	tags?: string[]; // i18nキー or 固定表示
 	icon?: string;
 	colorClass?: string;
+	date?: string;
 }
 
 // カテゴリ別のアイテム数を計算

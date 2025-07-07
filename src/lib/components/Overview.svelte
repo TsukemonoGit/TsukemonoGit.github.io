@@ -110,12 +110,10 @@
 	/* ライトモード用のグラデーション */
 	.preset-gradient-one {
 		background-image: linear-gradient(45deg, var(--color-primary-100), var(--color-tertiary-100));
-		color: var(--color-primary-contrast-100);
 	}
 
 	/* ダークモード用のグラデーション */
 	:global(.dark) .preset-gradient-one {
 		background-image: linear-gradient(45deg, var(--color-primary-600), var(--color-tertiary-600));
-		color: var(--color-primary-contrast-600);
 	}
 </style>
