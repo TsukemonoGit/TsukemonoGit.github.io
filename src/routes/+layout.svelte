@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import Header from '$lib/components/Header.svelte';
 	import { Menu } from '@lucide/svelte';
 	import '../app.css';
 	import { Navigation } from '@skeletonlabs/skeleton-svelte';
@@ -24,31 +22,44 @@
 	const EXPANDED_BREAKPOINT = 1200;
 
 	function checkWindowSize() {
-		isExpansed = window.innerWidth >= EXPANDED_BREAKPOINT;
+		if (typeof window !== 'undefined') {
+			isExpansed = window.innerWidth >= EXPANDED_BREAKPOINT;
+		}
 	}
 
 	onMount(() => {
 		checkWindowSize();
-		window.addEventListener('resize', checkWindowSize);
+		if (typeof window !== 'undefined') {
+			window.addEventListener('resize', checkWindowSize);
+		}
 	});
 
 	onDestroy(() => {
-		window.removeEventListener('resize', checkWindowSize);
+		if (typeof window !== 'undefined') {
+			window.removeEventListener('resize', checkWindowSize);
+		}
 	});
 </script>
 
-<div
-	class="card border-surface-100-900 mx-auto grid h-screen max-w-screen-2xl grid-cols-[auto_1fr] border"
->
-	<Navigation.Rail expanded={isExpansed} width={'w-12'}>
+<div class="card border-surface-100-900 h-screen grid-cols-[auto_1fr] overflow-y-auto border">
+	<Navigation.Rail
+		expanded={isExpansed}
+		width={'w-12'}
+		classes={`z-10 fixed transition-all duration-300 ease-in-out`}
+	>
 		{#snippet header()}
-			<Navigation.Tile labelExpanded="Menu" onclick={toggleExpanded} title="Toggle Menu Width">
+			<Navigation.Tile
+				labelExpanded="Menu"
+				onclick={toggleExpanded}
+				title="Toggle Menu Width"
+				classes="h-12"
+			>
 				<Menu />
 			</Navigation.Tile>
 		{/snippet}
 		{#snippet tiles()}
 			{#each navigationItems as item}
-				<Navigation.Tile labelExpanded={$t(item.nameKey)} href={item.href}>
+				<Navigation.Tile labelExpanded={$t(`${item.id}.label`)} href={item.href} classes="h-12">
 					<span class="text-xl">{item.emoji}</span>
 				</Navigation.Tile>
 			{/each}
@@ -58,11 +69,11 @@
 		{/snippet}
 	</Navigation.Rail>
 
-	<Header />
-
-	<main class="flex-1 overflow-y-auto px-4 py-6">
+	<main
+		class={`mx-auto max-w-screen-2xl flex-1 px-4 py-6 ${
+			isExpansed ? 'pl-62' : 'pl-14'
+		} transition-all duration-300 ease-in-out`}
+	>
 		{@render children()}
 	</main>
-
-	<Footer />
 </div>

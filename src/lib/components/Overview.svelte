@@ -17,10 +17,10 @@
 				class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_70%)]"
 			></div>
 			<div
-				class="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-gradient-to-br from-blue-200/30 to-purple-200/30 blur-xl"
+				class="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-gradient-to-br from-blue-200/30 to-purple-200/30 blur-xl dark:from-blue-800/20 dark:to-purple-800/20"
 			></div>
 			<div
-				class="absolute -bottom-4 -left-4 h-32 w-32 rounded-full bg-gradient-to-br from-pink-200/30 to-purple-200/30 blur-xl"
+				class="absolute -bottom-4 -left-4 h-32 w-32 rounded-full bg-gradient-to-br from-pink-200/30 to-purple-200/30 blur-xl dark:from-pink-800/20 dark:to-purple-800/20"
 			></div>
 
 			<div class="relative z-10 text-center">
@@ -31,7 +31,7 @@
 						₍ ･ᴗ･ ₎
 					</h2>
 					<p class="text-xl font-medium text-slate-700 dark:text-slate-200">
-						作ったものとかやったこととか
+						{$t('overview.description')}
 					</p>
 					<div
 						class="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
@@ -59,7 +59,7 @@
 						class="text-sm {category.colors.textSecondary} {category.colors
 							.darkTextSecondary} font-medium"
 					>
-						{$t(category.nameKey)}
+						{$t(`${category.id}.link`)}
 					</div>
 				</a>
 			{/each}

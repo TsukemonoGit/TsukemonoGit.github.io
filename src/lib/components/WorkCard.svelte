@@ -1,7 +1,10 @@
 <!-- Card.svelte -->
-<script>
+<script lang="ts">
+	import type { Work } from '$lib/data/state';
 	import { t } from '@konemono/svelte5-i18n';
-	let { category, id, url, image, tags = [] } = $props();
+
+	type Props = Work & { category: string };
+	let { category, id, url, image, tags = [] }: Props = $props();
 
 	const titleKey = `${category}.${id}.title`;
 	const descriptionKey = `${category}.${id}.description`;
@@ -12,11 +15,17 @@
 	class="bg-base-100 border-surface-200 block overflow-hidden rounded-xl border p-0 shadow-md transition-shadow duration-300 hover:shadow-lg"
 >
 	<!-- Header -->
-	{#if image}
-		<header class="overflow-hidden">
-			<img src={image} class="aspect-[21/9] w-full object-cover" alt="banner" />
-		</header>
-	{/if}
+	<header
+		class="bg-surface-100 flex aspect-[21/9] w-full items-center justify-center overflow-hidden"
+	>
+		{#if image}
+			<img src={image} class="h-full w-full object-cover" alt="banner" />
+		{:else}
+			<!-- 画像がない場合のプレースホルダー（SVGやアイコンでも可）-->
+			<span class="text-sm text-slate-400">No image available</span>
+		{/if}
+	</header>
+
 	<!-- Article -->
 	<article class="space-y-4 p-6">
 		<div>
@@ -33,12 +42,13 @@
 			</div>
 		{/if}
 	</article>
+
 	<!-- Footer -->
 	<footer class="px-6 pb-6">
 		<div class="flex flex-row-reverse">
-			<span class="btn preset-filled-primary-500 text-primary text-sm font-medium"
-				>{$t(`${category}.${id}.link_text`, 'common.view')}</span
-			>
+			<span class="btn preset-filled-primary-500 text-primary text-sm font-medium">
+				{$t(`${category}.${id}.link_text`, 'common.view')}
+			</span>
 		</div>
 	</footer>
 </a>

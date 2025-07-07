@@ -1,1 +1,35 @@
-{ "common": { "view": "見る" } }
+{
+	"overview": { "description": "作ったものとかやったこととか" },
+	"games": {
+		"neko": {
+			"title": "ネコダッシュ",
+			"description": "ネコが走る2Dアクションゲームです。",
+			"link_text": "プレイする"
+		},
+		"puzzle_rpg": {
+			"title": "パズルRPG",
+			"description": "戦略と運で戦うRPG。",
+			"link_text": "ゲームを開始"
+		},
+		"label": "ゲーム",
+		"title": "ゲーム作品",
+		"description": "個人で制作したゲーム作品の一覧です。"
+	},
+	"nostr": {
+		"note_viewer": {
+			"title": "Nostrノートビューア",
+			"description": "Nostrノートを一覧・検索できます。",
+			"link_text": "ツールを見る"
+		},
+		"label": "Nostrツール",
+		"title": "Nostr関連ツール",
+		"description": "Nostr向けに作成したツールやライブラリです。"
+	},
+	"tag": {
+		"open_source": "オープンソース",
+		"featured": "注目"
+	},
+	"common": {
+		"view": "詳細を見る"
+	}
+}

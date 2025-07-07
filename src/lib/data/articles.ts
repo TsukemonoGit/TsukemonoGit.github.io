@@ -1,7 +1,7 @@
 export const articles = [
 	{
-		titleKey: '迷子のねこダッシュ',
-		descriptionKey: '3DアクションUnityゲーム。迷路を駆け抜ける。',
+		id: '迷子のねこダッシュ',
+
 		image: '/images/neko-dash.png',
 		url: 'https://unityroom.com/games/neko-dash',
 		tags: ['Unity', 'Game']

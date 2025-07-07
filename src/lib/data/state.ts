@@ -1,12 +1,24 @@
 import { games } from './games';
-import { nostrTools } from './nostr';
-import { fanActivities } from './fan';
-import { mentions } from './media';
+
+import { mentions } from './mentions';
 import { links } from './links';
 import { articles } from './articles';
+import { nostr } from './nostr';
+import { fanz } from './fanz';
+
+// idに対応するitemsマップ（命名の不一致に注意）
+const itemsMap: { [key: string]: Work[] } = {
+	games,
+	nostr,
+	fanz,
+	mentions,
+
+	articles
+};
 export interface Work {
-	category: string; // 例: 'games', 'nostr_tools'
+	//category: string; // 例: 'games', 'nostr_tools'
 	id: string; // 各Workの一意なID（例: 'neko_dash'）
+	image?: string;
 	url?: string;
 	tags?: string[]; // i18nキー or 固定表示
 }
@@ -14,8 +26,8 @@ export interface Work {
 // カテゴリ別のアイテム数を計算
 export const categoryStats = {
 	games: games.length,
-	nostrTools: nostrTools.length,
-	fanActivities: fanActivities.length,
+	nostrTools: nostr.length,
+	fanActivities: fanz.length,
 	mentions: mentions.length,
 	links: links.length,
 	articles: articles.length
@@ -23,7 +35,7 @@ export const categoryStats = {
 // 統合カテゴリーデータの型定義
 export interface CategoryData {
 	id: string;
-	nameKey: string;
+
 	emoji: string;
 	href: string;
 	showInOverview: boolean;
@@ -47,7 +59,7 @@ export interface CategoryData {
 export const categoryData: CategoryData[] = [
 	{
 		id: 'overview',
-		nameKey: 'category.overview.name',
+
 		emoji: '📊',
 		href: '#overview',
 		showInOverview: false,
@@ -68,7 +80,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'games',
-		nameKey: 'category.games.name',
+
 		emoji: '🎮',
 		href: '#games',
 		showInOverview: true,
@@ -88,8 +100,8 @@ export const categoryData: CategoryData[] = [
 		}
 	},
 	{
-		id: 'nostr-tools',
-		nameKey: 'category.nostr_tools.name',
+		id: 'nostr',
+
 		emoji: '⚡',
 		href: '#nostr',
 		showInOverview: true,
@@ -110,7 +122,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'tools',
-		nameKey: 'category.tools.name',
+
 		emoji: '🛠️',
 		href: '#tools',
 		showInOverview: false,
@@ -130,8 +142,8 @@ export const categoryData: CategoryData[] = [
 		}
 	},
 	{
-		id: 'fan-activities',
-		nameKey: 'category.fan_activities.name',
+		id: 'fanz',
+
 		emoji: '💗',
 		href: '#fan',
 		showInOverview: true,
@@ -152,7 +164,6 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'articles',
-		nameKey: 'category.articles.name',
 		emoji: '✍️',
 		href: '#articles',
 		showInOverview: true,
@@ -173,7 +184,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'mentions',
-		nameKey: 'category.mentions.name',
+
 		emoji: '🗣️',
 		href: '#mentions',
 		showInOverview: true,
@@ -194,7 +205,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'links',
-		nameKey: 'category.links.name',
+
 		emoji: '🔗',
 		href: '#links',
 		showInOverview: true,
@@ -248,4 +259,20 @@ export function getNavigationCategories(categoryStats: any): (CategoryData & { c
 					] || 0
 				: undefined
 		}));
+}
+
+// items付きのデータ型
+export type CategoryDataWithItems = ReturnType<typeof enrichCategoryData>[number] & {
+	items: any[];
+};
+
+// カテゴリデータに items を加える
+export function enrichCategoryData() {
+	return categoryData.map((category) => {
+		const items = itemsMap[category.id];
+		return {
+			...category,
+			items
+		};
+	});
 }

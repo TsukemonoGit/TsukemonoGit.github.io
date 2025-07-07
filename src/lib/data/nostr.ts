@@ -1,14 +1,14 @@
-export const nostrTools = [
+export const nostr = [
 	{
-		titleKey: 'Nostr Note Viewer',
-		descriptionKey: 'Nostr投稿を可視化するSPAツール。',
+		id: 'nostviewstr',
+
 		image: '/images/note-viewer.png',
 		url: 'https://example.com/noteviewer',
 		tags: ['Nostr', 'SPA', 'Svelte']
 	},
 	{
-		titleKey: 'rx-nostr',
-		descriptionKey: 'NostrイベントをRxJSで扱うnpmライブラリ。',
+		id: 'rx-nostr',
+
 		image: '/images/rx-nostr.png',
 		url: 'https://www.npmjs.com/package/rx-nostr',
 		tags: ['Nostr', 'npm', 'TypeScript']
