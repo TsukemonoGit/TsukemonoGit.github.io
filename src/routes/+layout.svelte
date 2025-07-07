@@ -7,6 +7,7 @@
 	import { categoryStats, getNavigationCategories } from '$lib/data/state';
 	import { t } from '@konemono/svelte5-i18n';
 	import '$lib/i18n/index.ts';
+	import { icons } from '@lucide/svelte';
 
 	let { children } = $props();
 
@@ -59,13 +60,15 @@
 		{/snippet}
 		{#snippet tiles()}
 			{#each navigationItems as item}
+				{@const Icon = icons[item.icon as keyof typeof icons] ?? null}
 				<Navigation.Tile
 					labelExpanded={$t(`${item.id}.label`)}
 					href={item.href}
 					classes="h-12"
 					expandedClasses="break-keep overflow-x-hidden whitespace-pre"
 				>
-					<span class="text-xl">{item.emoji}</span>
+					{#if Icon}
+						<Icon class={`h-6 w-6 ${item.iconColorClass}`} />{/if}
 				</Navigation.Tile>
 			{/each}
 		{/snippet}

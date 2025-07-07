@@ -22,7 +22,6 @@ export interface Work {
 	image?: string;
 	url?: string;
 	tags?: string[]; // i18nキー or 固定表示
-	emoji?: string;
 	icon?: string;
 	colorClass?: string;
 }
@@ -40,7 +39,8 @@ export const categoryStats = {
 export interface CategoryData {
 	id: string;
 
-	emoji: string;
+	icon: string;
+	iconColorClass: string;
 	href: string;
 	showInOverview: boolean;
 	showInNavigation: boolean;
@@ -58,13 +58,11 @@ export interface CategoryData {
 		darkTextSecondary: string;
 	};
 }
-
-// 統合カテゴリーデータ
 export const categoryData: CategoryData[] = [
 	{
 		id: 'overview',
-
-		emoji: '📊',
+		icon: 'SquareChartGantt',
+		iconColorClass: 'text-slate-600 dark:text-slate-400',
 		href: '#overview',
 		showInOverview: false,
 		showInNavigation: true,
@@ -84,8 +82,8 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'games',
-
-		emoji: '🎮',
+		icon: 'Gamepad2',
+		iconColorClass: 'text-blue-600 dark:text-blue-400',
 		href: '#games',
 		showInOverview: true,
 		showInNavigation: true,
@@ -105,8 +103,8 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'nostr',
-
-		emoji: '⚡',
+		icon: 'Zap',
+		iconColorClass: 'text-purple-600 dark:text-purple-400',
 		href: '#nostr',
 		showInOverview: true,
 		showInNavigation: true,
@@ -126,8 +124,8 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'tools',
-
-		emoji: '🛠️',
+		icon: 'ToolCase',
+		iconColorClass: 'text-gray-600 dark:text-gray-400',
 		href: '#tools',
 		showInOverview: false,
 		showInNavigation: true,
@@ -147,8 +145,8 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'fanz',
-
-		emoji: '💗',
+		icon: 'Heart',
+		iconColorClass: 'text-pink-600 dark:text-pink-400',
 		href: '#fan',
 		showInOverview: true,
 		showInNavigation: true,
@@ -168,7 +166,8 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'articles',
-		emoji: '✍️',
+		icon: 'FilePenLine',
+		iconColorClass: 'text-cyan-600 dark:text-cyan-400',
 		href: '#articles',
 		showInOverview: true,
 		showInNavigation: true,
@@ -188,8 +187,8 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'mentions',
-
-		emoji: '🗣️',
+		icon: 'MessagesSquare',
+		iconColorClass: 'text-amber-600 dark:text-amber-400',
 		href: '#mentions',
 		showInOverview: true,
 		showInNavigation: true,
@@ -209,8 +208,8 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'links',
-
-		emoji: '🔗',
+		icon: 'Link',
+		iconColorClass: 'text-emerald-600 dark:text-emerald-400',
 		href: '#links',
 		showInOverview: true,
 		showInNavigation: true,

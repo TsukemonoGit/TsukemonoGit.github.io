@@ -4,16 +4,19 @@
 	import { enrichCategoryData } from '$lib/data/state';
 	import { t } from '@konemono/svelte5-i18n';
 	import LinkCard from './LinkCard.svelte';
+	import { icons } from '@lucide/svelte';
 
 	const categoryData = enrichCategoryData(); // items付き
 </script>
 
 {#each categoryData as category}
+	{@const Icon = icons[category.icon as keyof typeof icons] ?? null}
 	<section id={category.id} class="bg-base-200/50 px-4 py-12">
 		<div class="container mx-auto max-w-6xl">
 			<div class="section-header mb-8">
 				<div class="flex items-center gap-4">
-					<span class="text-4xl">{category.emoji}</span>
+					{#if Icon}
+						<Icon class={`h-12 w-12 ${category.iconColorClass}`} />{/if}
 					<div>
 						<h2 class="text-base-content text-4xl font-bold">{$t(`${category.id}.title`)}</h2>
 						<p class="text-base-content/60">{$t(`${category.id}.description`)}</p>

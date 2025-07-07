@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import { categoryStats, getOverviewCategories } from '$lib/data/state';
 	import { t } from '@konemono/svelte5-i18n';
-
+	import { icons } from '@lucide/svelte';
 	// カテゴリーデータとstatsを結合
 	const categories = getOverviewCategories(categoryStats);
 </script>
@@ -10,31 +10,23 @@
 <section id="overview" class="px-4 pb-12">
 	<div class="container mx-auto max-w-6xl">
 		<div
-			class="hero-section relative flex min-h-[240px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-8 shadow-xl dark:from-slate-800 dark:via-purple-900/20 dark:to-pink-900/20"
+			class="card preset-gradient-one flex min-h-[200px] items-center justify-center overflow-hidden shadow-xl"
 		>
-			<!-- 背景装飾 -->
-			<div
-				class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_70%)]"
-			></div>
-			<div
-				class="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-gradient-to-br from-blue-200/30 to-purple-200/30 blur-xl dark:from-blue-800/20 dark:to-purple-800/20"
-			></div>
-			<div
-				class="absolute -bottom-4 -left-4 h-32 w-32 rounded-full bg-gradient-to-br from-pink-200/30 to-purple-200/30 blur-xl dark:from-pink-800/20 dark:to-purple-800/20"
-			></div>
-
 			<div class="relative z-10 text-center">
 				<div class="max-w-xl">
 					<h2
-						class="animate-bounce-gentle mb-4 overflow-visible font-mono text-5xl font-bold break-keep whitespace-nowrap text-slate-800 dark:text-slate-100"
+						class="animate-bounce-gentle mb-4 overflow-visible font-mono text-5xl font-bold break-keep whitespace-nowrap
+				text-slate-800 dark:text-white"
 					>
 						₍ ･ᴗ･ ₎
 					</h2>
-					<p class="text-xl font-medium text-slate-700 dark:text-slate-200">
+					<p class="text-xl font-medium text-slate-700 dark:text-slate-300">
 						{$t('overview.description')}
 					</p>
 					<div
-						class="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+						class="mx-auto mt-4 h-1 w-16 rounded-full
+				bg-gradient-to-r from-blue-400 to-purple-400 opacity-80
+				dark:from-blue-600 dark:to-purple-600"
 					></div>
 				</div>
 			</div>
@@ -43,6 +35,7 @@
 		<!-- 統計ダッシュボード -->
 		<div class="mt-10 grid grid-cols-2 gap-6 lg:grid-cols-3 xl:grid-cols-6">
 			{#each categories as category}
+				{@const Icon = icons[category.icon as keyof typeof icons] ?? null}
 				<a
 					href={category.href}
 					class="stat-card bg-gradient-to-br {category.colors.from} {category.colors.to} {category
@@ -50,7 +43,8 @@
 						.darkBorder} cursor-pointer rounded-2xl border p-6 text-center shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
 				>
 					<div class="{category.colors.text} {category.colors.darkText} mb-3">
-						<span class="text-4xl drop-shadow-sm">{category.emoji}</span>
+						{#if Icon}
+							<Icon class={`mx-auto h-12 w-12 text-center ${category.iconColorClass}`} />{/if}
 					</div>
 					<div class="{category.colors.text} {category.colors.darkText} mb-1 text-3xl font-bold">
 						{category.count}
@@ -99,12 +93,6 @@
 		animation: bounce-gentle 3s ease-in-out infinite;
 	}
 
-	.hero-section {
-		background-image:
-			radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-			radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-	}
-
 	.stat-card {
 		transform-origin: center;
 		backdrop-filter: blur(10px);
@@ -117,5 +105,17 @@
 	/* セクション間のスペース調整 */
 	section {
 		scroll-margin-top: 2rem;
+	}
+
+	/* ライトモード用のグラデーション */
+	.preset-gradient-one {
+		background-image: linear-gradient(45deg, var(--color-primary-100), var(--color-tertiary-100));
+		color: var(--color-primary-contrast-100);
+	}
+
+	/* ダークモード用のグラデーション */
+	:global(.dark) .preset-gradient-one {
+		background-image: linear-gradient(45deg, var(--color-primary-600), var(--color-tertiary-600));
+		color: var(--color-primary-contrast-600);
 	}
 </style>
