@@ -1,5 +1,6 @@
 <script>
 	import { categoryStats, getOverviewCategories } from '$lib/data/state';
+	import { t } from '@konemono/svelte5-i18n';
 
 	// カテゴリーデータとstatsを結合
 	const categories = getOverviewCategories(categoryStats);
@@ -58,7 +59,7 @@
 						class="text-sm {category.colors.textSecondary} {category.colors
 							.darkTextSecondary} font-medium"
 					>
-						{category.name}
+						{$t(category.nameKey)}
 					</div>
 				</a>
 			{/each}

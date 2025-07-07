@@ -1,21 +1,15 @@
-export interface FanActivity {
-	title: string;
-	description: string;
-	url?: string;
-	linkText?: string;
-	tags?: string[];
-}
+import type { Work } from './state';
 
-export const fanActivities: FanActivity[] = [
+export const fanActivities: Work[] = [
 	{
-		title: 'ファンツール',
-		description: '楽曲検索・情報整理ツール',
+		titleKey: 'ファンツール',
+		descriptionKey: '楽曲検索・情報整理ツール',
 		url: 'https://example.com/tool',
-		linkText: '歌詞検索くん'
+		linkTextKey: '歌詞検索くん'
 	},
 	{
-		title: 'FAまとめ',
-		description: 'PixivやTwitterでの創作活動',
+		titleKey: 'FAまとめ',
+		descriptionKey: 'PixivやTwitterでの創作活動',
 		tags: ['イラスト', '動画']
 	}
 ];

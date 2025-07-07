@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { categoryStats, getNavigationCategories } from '$lib/data/state';
-
+	import { t } from '@konemono/svelte5-i18n';
 	import LightSwitch from './LightSwitch.svelte';
 
 	// ナビゲーション用のカテゴリーデータを取得
@@ -23,7 +23,7 @@
 			>
 				<span class="text-xl">{item.emoji}</span>
 				<div class="flex-1">
-					<span class="font-medium">{item.name}</span>
+					<span class="font-medium">{$t(item.nameKey)}</span>
 				</div>
 			</a>
 		{/each}

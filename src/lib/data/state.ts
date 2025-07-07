@@ -4,6 +4,12 @@ import { fanActivities } from './fan';
 import { mentions } from './media';
 import { links } from './links';
 import { articles } from './articles';
+export interface Work {
+	category: string; // 例: 'games', 'nostr_tools'
+	id: string; // 各Workの一意なID（例: 'neko_dash'）
+	url?: string;
+	tags?: string[]; // i18nキー or 固定表示
+}
 
 // カテゴリ別のアイテム数を計算
 export const categoryStats = {
@@ -17,7 +23,7 @@ export const categoryStats = {
 // 統合カテゴリーデータの型定義
 export interface CategoryData {
 	id: string;
-	name: string;
+	nameKey: string;
 	emoji: string;
 	href: string;
 	showInOverview: boolean;
@@ -41,7 +47,7 @@ export interface CategoryData {
 export const categoryData: CategoryData[] = [
 	{
 		id: 'overview',
-		name: '概要',
+		nameKey: 'category.overview.name',
 		emoji: '📊',
 		href: '#overview',
 		showInOverview: false,
@@ -62,7 +68,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'games',
-		name: 'ゲーム',
+		nameKey: 'category.games.name',
 		emoji: '🎮',
 		href: '#games',
 		showInOverview: true,
@@ -83,7 +89,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'nostr-tools',
-		name: 'Nostr関連',
+		nameKey: 'category.nostr_tools.name',
 		emoji: '⚡',
 		href: '#nostr',
 		showInOverview: true,
@@ -104,7 +110,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'tools',
-		name: 'その他作ったもの',
+		nameKey: 'category.tools.name',
 		emoji: '🛠️',
 		href: '#tools',
 		showInOverview: false,
@@ -125,7 +131,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'fan-activities',
-		name: 'ファン活動',
+		nameKey: 'category.fan_activities.name',
 		emoji: '💗',
 		href: '#fan',
 		showInOverview: true,
@@ -146,7 +152,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'articles',
-		name: '書いた記事',
+		nameKey: 'category.articles.name',
 		emoji: '✍️',
 		href: '#articles',
 		showInOverview: true,
@@ -167,7 +173,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'mentions',
-		name: '紹介・言及',
+		nameKey: 'category.mentions.name',
 		emoji: '🗣️',
 		href: '#mentions',
 		showInOverview: true,
@@ -188,7 +194,7 @@ export const categoryData: CategoryData[] = [
 	},
 	{
 		id: 'links',
-		name: 'SNS・アカウント',
+		nameKey: 'category.links.name',
 		emoji: '🔗',
 		href: '#links',
 		showInOverview: true,

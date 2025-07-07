@@ -1,60 +1,68 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
-	import Sidebar from '$lib/components/Sidebar.svelte';
+	import { Menu } from '@lucide/svelte';
 	import '../app.css';
-	import { Modal } from '@skeletonlabs/skeleton-svelte';
+	import { Navigation } from '@skeletonlabs/skeleton-svelte';
+	import LightSwitch from '$lib/components/LightSwitch.svelte';
+	import { categoryStats, getNavigationCategories } from '$lib/data/state';
+	import { t } from '@konemono/svelte5-i18n';
+	import '$lib/i18n/index.ts';
 
 	let { children } = $props();
-	let drawerState = $state(false);
 
-	function drawerClose() {
-		drawerState = false;
+	let isExpansed = $state(false);
+
+	function toggleExpanded() {
+		isExpansed = !isExpansed;
 	}
+
+	const navigationItems = getNavigationCategories(categoryStats);
+
+	// 画面幅のしきい値を設定（例: 1200px以上なら展開）
+	const EXPANDED_BREAKPOINT = 1200;
+
+	function checkWindowSize() {
+		isExpansed = window.innerWidth >= EXPANDED_BREAKPOINT;
+	}
+
+	onMount(() => {
+		checkWindowSize();
+		window.addEventListener('resize', checkWindowSize);
+	});
+
+	onDestroy(() => {
+		window.removeEventListener('resize', checkWindowSize);
+	});
 </script>
 
-<!-- メインレイアウト -->
-<div class="grid h-screen grid-cols-1 overflow-hidden sm:grid-cols-[250px_1fr]">
-	<!-- Sidebar (大画面のみ表示) -->
-	<div class="bg-base-200 hidden h-screen overflow-y-auto sm:block">
-		<Sidebar />
-	</div>
+<div
+	class="card border-surface-100-900 mx-auto grid h-screen max-w-screen-2xl grid-cols-[auto_1fr] border"
+>
+	<Navigation.Rail expanded={isExpansed} width={'w-12'}>
+		{#snippet header()}
+			<Navigation.Tile labelExpanded="Menu" onclick={toggleExpanded} title="Toggle Menu Width">
+				<Menu />
+			</Navigation.Tile>
+		{/snippet}
+		{#snippet tiles()}
+			{#each navigationItems as item}
+				<Navigation.Tile labelExpanded={$t(item.nameKey)} href={item.href}>
+					<span class="text-xl">{item.emoji}</span>
+				</Navigation.Tile>
+			{/each}
+		{/snippet}
+		{#snippet footer()}
+			<LightSwitch />
+		{/snippet}
+	</Navigation.Rail>
 
-	<!-- メインコンテンツ -->
-	<div class="flex h-screen flex-col overflow-hidden">
-		<!-- ヘッダー -->
-		<Header />
+	<Header />
 
-		<!-- モバイル用ドロワーボタン（小画面のみ） -->
-		<div class="sm:hidden">
-			<Modal
-				open={drawerState}
-				onOpenChange={(e) => (drawerState = e.open)}
-				triggerBase="btn preset-tonal"
-				contentBase="bg-surface-100-900 p-4 space-y-4 shadow-xl w-[80vw] max-w-[320px] h-screen overflow-y-auto"
-				positionerJustify="justify-start"
-				transitionsPositionerIn={{ x: -320, duration: 200 }}
-				transitionsPositionerOut={{ x: -320, duration: 200 }}
-			>
-				{#snippet trigger()}
-					☰ メニュー
-				{/snippet}
-				{#snippet content()}
-					<header class="flex items-center justify-between">
-						<h2 class="text-lg font-bold">メニュー</h2>
-						<button class="btn btn-sm btn-ghost" onclick={drawerClose}>×</button>
-					</header>
-					<Sidebar />
-				{/snippet}
-			</Modal>
-		</div>
+	<main class="flex-1 overflow-y-auto px-4 py-6">
+		{@render children()}
+	</main>
 
-		<!-- メインの子コンテンツ -->
-		<main class="flex-1 overflow-y-auto px-4 py-6">
-			{@render children()}
-		</main>
-
-		<!-- フッター -->
-		<Footer />
-	</div>
+	<Footer />
 </div>
