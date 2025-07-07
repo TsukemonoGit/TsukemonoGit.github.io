@@ -1,8 +1,8 @@
 <script>
-	import { categoryStats, getCategoryDataWithStats } from '$lib/data/state';
+	import { categoryStats, getOverviewCategories } from '$lib/data/state';
 
 	// カテゴリーデータとstatsを結合
-	const categories = getCategoryDataWithStats(categoryStats);
+	const categories = getOverviewCategories(categoryStats);
 </script>
 
 <!-- 概要セクション -->
