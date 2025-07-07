@@ -26,7 +26,7 @@
 			<div class="relative z-10 text-center">
 				<div class="max-w-xl">
 					<h2
-						class="animate-bounce-gentle mb-4 font-mono text-5xl font-bold text-slate-800 dark:text-slate-100"
+						class="animate-bounce-gentle mb-4 overflow-visible font-mono text-5xl font-bold break-keep whitespace-nowrap text-slate-800 dark:text-slate-100"
 					>
 						₍ ･ᴗ･ ₎
 					</h2>

@@ -13,7 +13,8 @@ const itemsMap: { [key: string]: Work[] } = {
 	fanz,
 	mentions,
 
-	articles
+	articles,
+	links
 };
 export interface Work {
 	//category: string; // 例: 'games', 'nostr_tools'
@@ -21,6 +22,7 @@ export interface Work {
 	image?: string;
 	url?: string;
 	tags?: string[]; // i18nキー or 固定表示
+	emoji?: string;
 }
 
 // カテゴリ別のアイテム数を計算

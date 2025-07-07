@@ -3,6 +3,7 @@
 	import WorkCard from './WorkCard.svelte';
 	import { enrichCategoryData } from '$lib/data/state';
 	import { t } from '@konemono/svelte5-i18n';
+	import LinkCard from './LinkCard.svelte';
 
 	const categoryData = enrichCategoryData(); // items付き
 </script>
@@ -21,11 +22,17 @@
 			</div>
 
 			<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-				{#each category.items as work, index}
-					<div class="animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
-						<WorkCard category={category.id} {...work} />
-					</div>
-				{/each}
+				{#if category.id === 'links'}
+					{#each category.items as work, index}
+						<LinkCard {work} />
+					{/each}
+				{:else}
+					{#each category.items as work, index}
+						<div class="animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>
+							<WorkCard category={category.id} {...work} />
+						</div>
+					{/each}
+				{/if}
 			</div>
 		</div>
 	</section>
