@@ -1,83 +1,67 @@
 <script>
-	import { categoryStats } from '$lib/data/state';
+	import { categoryStats, getCategoryDataWithStats } from '$lib/data/state';
+
+	// カテゴリーデータとstatsを結合
+	const categories = getCategoryDataWithStats(categoryStats);
 </script>
 
 <!-- 概要セクション -->
 <section id="overview" class="px-4 pb-12">
 	<div class="container mx-auto max-w-6xl">
 		<div
-			class="relative flex min-h-[200px] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-slate-100 to-slate-200 p-6 shadow-md dark:from-slate-800 dark:to-slate-900"
+			class="hero-section relative flex min-h-[240px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-8 shadow-xl dark:from-slate-800 dark:via-purple-900/20 dark:to-pink-900/20"
 		>
-			<div class="text-center">
+			<!-- 背景装飾 -->
+			<div
+				class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_70%)]"
+			></div>
+			<div
+				class="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-gradient-to-br from-blue-200/30 to-purple-200/30 blur-xl"
+			></div>
+			<div
+				class="absolute -bottom-4 -left-4 h-32 w-32 rounded-full bg-gradient-to-br from-pink-200/30 to-purple-200/30 blur-xl"
+			></div>
+
+			<div class="relative z-10 text-center">
 				<div class="max-w-xl">
-					<h2 class="mb-3 font-mono text-4xl font-bold text-slate-800 dark:text-slate-100">
+					<h2
+						class="animate-bounce-gentle mb-4 font-mono text-5xl font-bold text-slate-800 dark:text-slate-100"
+					>
 						₍ ･ᴗ･ ₎
 					</h2>
-					<p class="text-lg text-slate-600 dark:text-slate-300">作ったものとかやったこととか</p>
+					<p class="text-xl font-medium text-slate-700 dark:text-slate-200">
+						作ったものとかやったこととか
+					</p>
+					<div
+						class="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+					></div>
 				</div>
 			</div>
 		</div>
+
 		<!-- 統計ダッシュボード -->
-		<div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-6">
-			<div class=" bg-base-100 border-surface-200 rounded-xl border p-6 text-center shadow-md">
-				<div class="text-primary mb-2">
-					<span class="text-3xl">🎮</span>
-				</div>
-				<div class=" text-primary text-3xl font-bold">
-					{categoryStats.games}
-				</div>
-				<div class=" text-sm">ゲーム作品</div>
-			</div>
-
-			<div class=" bg-base-100 border-surface-200 rounded-xl border p-6 text-center shadow-md">
-				<div class=" text-secondary mb-2">
-					<span class="text-3xl">⚡</span>
-				</div>
-				<div class=" text-secondary text-3xl font-bold">
-					{categoryStats.nostrTools}
-				</div>
-				<div class=" text-sm">Nostrツール</div>
-			</div>
-
-			<div class=" bg-base-100 border-surface-200 rounded-xl border p-6 text-center shadow-md">
-				<div class=" text-accent mb-2">
-					<span class="text-3xl">💗</span>
-				</div>
-				<div class="text-accent text-3xl font-bold">
-					{categoryStats.fanActivities}
-				</div>
-				<div class=" text-sm">ファン活動</div>
-			</div>
-
-			<div class=" bg-base-100 border-surface-200 rounded-xl border p-6 text-center shadow-md">
-				<div class=" text-info mb-2">
-					<span class="text-3xl">✍️</span>
-				</div>
-				<div class="text-info text-3xl font-bold">
-					{categoryStats.articles}
-				</div>
-				<div class=" text-sm">執筆記事</div>
-			</div>
-
-			<div class=" bg-base-100 border-surface-200 rounded-xl border p-6 text-center shadow-md">
-				<div class=" text-warning mb-2">
-					<span class="text-3xl">🗣️</span>
-				</div>
-				<div class=" text-warning text-3xl font-bold">
-					{categoryStats.mentions}
-				</div>
-				<div class="text-sm">紹介・言及</div>
-			</div>
-
-			<div class=" bg-base-100 border-surface-200 rounded-xl border p-6 text-center shadow-md">
-				<div class=" text-success mb-2">
-					<span class="text-3xl">🔗</span>
-				</div>
-				<div class=" text-success text-3xl font-bold">
-					{categoryStats.links}
-				</div>
-				<div class=" text-sm">SNS・プラットフォーム</div>
-			</div>
+		<div class="mt-10 grid grid-cols-2 gap-6 lg:grid-cols-3 xl:grid-cols-6">
+			{#each categories as category}
+				<a
+					href={category.href}
+					class="stat-card bg-gradient-to-br {category.colors.from} {category.colors.to} {category
+						.colors.border} {category.colors.darkFrom} {category.colors.darkTo} {category.colors
+						.darkBorder} cursor-pointer rounded-2xl border p-6 text-center shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+				>
+					<div class="{category.colors.text} {category.colors.darkText} mb-3">
+						<span class="text-4xl drop-shadow-sm">{category.emoji}</span>
+					</div>
+					<div class="{category.colors.text} {category.colors.darkText} mb-1 text-3xl font-bold">
+						{category.count}
+					</div>
+					<div
+						class="text-sm {category.colors.textSecondary} {category.colors
+							.darkTextSecondary} font-medium"
+					>
+						{category.name}
+					</div>
+				</a>
+			{/each}
 		</div>
 	</div>
 </section>
@@ -94,14 +78,43 @@
 		}
 	}
 
+	@keyframes bounce-gentle {
+		0%,
+		20%,
+		50%,
+		80%,
+		100% {
+			transform: translateY(0);
+		}
+		40% {
+			transform: translateY(-10px);
+		}
+		60% {
+			transform: translateY(-5px);
+		}
+	}
+
+	.animate-bounce-gentle {
+		animation: bounce-gentle 3s ease-in-out infinite;
+	}
+
+	.hero-section {
+		background-image:
+			radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+			radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+	}
+
+	.stat-card {
+		transform-origin: center;
+		backdrop-filter: blur(10px);
+	}
+
+	.stat-card:hover {
+		transform: translateY(-4px) scale(1.02);
+	}
+
 	/* セクション間のスペース調整 */
 	section {
 		scroll-margin-top: 2rem;
-	}
-
-	@media (max-width: 768px) {
-		.hero-content h1 {
-			font-size: 2.5rem;
-		}
 	}
 </style>

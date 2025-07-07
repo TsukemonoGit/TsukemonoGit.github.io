@@ -1,6 +1,10 @@
 <script lang="ts">
-	import { categoryStats } from '$lib/data/state';
+	import { categoryStats, getNavigationCategories } from '$lib/data/state';
+
 	import LightSwitch from './LightSwitch.svelte';
+
+	// ナビゲーション用のカテゴリーデータを取得
+	const navigationItems = getNavigationCategories(categoryStats);
 </script>
 
 <div class="flex h-full flex-col p-6">
@@ -12,83 +16,17 @@
 
 	<!-- ナビゲーション -->
 	<nav class="flex-1 space-y-2">
-		<a
-			href="#overview"
-			class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-		>
-			<span class="text-xl">📊</span>
-			<span class="font-medium">概要</span>
-		</a>
-
-		<a
-			href="#games"
-			class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-		>
-			<span class="text-xl">🎮</span>
-			<div class="flex-1">
-				<span class="font-medium">ゲーム</span>
-			</div>
-		</a>
-
-		<a
-			href="#nostr"
-			class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-		>
-			<span class="text-xl">⚡</span>
-			<div class="flex-1">
-				<span class="font-medium">Nostr関連</span>
-			</div>
-		</a>
-
-		<a
-			href="#tools"
-			class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-		>
-			<span class="text-xl">🛠️</span>
-			<div class="flex-1">
-				<span class="font-medium">その他作ったもの</span>
-			</div>
-		</a>
-
-		<a
-			href="#fan"
-			class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-		>
-			<span class="text-xl">💗</span>
-			<div class="flex-1">
-				<span class="font-medium">ファン活動</span>
-			</div>
-		</a>
-
-		<a
-			href="#articles"
-			class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-		>
-			<span class="text-xl">✍️</span>
-			<div class="flex-1">
-				<span class="font-medium">書いた記事</span>
-			</div>
-		</a>
-
-		<a
-			href="#mentions"
-			class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-		>
-			<span class="text-xl">🗣️</span>
-			<div class="flex-1">
-				<span class="font-medium">紹介・言及</span>
-			</div>
-		</a>
-
-		<a
-			href="#links"
-			class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-		>
-			<span class="text-xl">🔗</span>
-			<div class="flex-1">
-				<span class="font-medium">SNS・アカウント</span>
-			</div>
-		</a>
+		{#each navigationItems as item}
+			<a
+				href={item.href}
+				class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
+			>
+				<span class="text-xl">{item.emoji}</span>
+				<div class="flex-1">
+					<span class="font-medium">{item.name}</span>
+				</div>
+			</a>
+		{/each}
 	</nav>
 
 	<!-- フッター -->

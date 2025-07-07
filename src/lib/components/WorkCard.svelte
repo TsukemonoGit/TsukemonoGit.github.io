@@ -3,101 +3,39 @@
 	let { image, title, description, tags = [], url, buttonText = '見る' } = $props();
 </script>
 
-<div class="card">
+<a
+	href={url}
+	class="bg-base-100 border-surface-200 block overflow-hidden rounded-xl border p-0 shadow-md transition-shadow duration-300 hover:shadow-lg"
+>
+	<!-- Header -->
 	{#if image}
-		<figure>
-			<img src={image} alt={title} />
-		</figure>
+		<header class="overflow-hidden">
+			<img src={image} class="aspect-[21/9] w-full object-cover" alt="banner" />
+		</header>
 	{/if}
-	<div class="card-body">
-		<h2 class="card-title">{title}</h2>
-		<p class="description">{description}</p>
+	<!-- Article -->
+	<article class="space-y-4 p-6">
+		<div>
+			<h3 class="mb-2 text-xl font-bold text-slate-800 dark:text-slate-100">{title}</h3>
+		</div>
+		<p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+			{description}
+		</p>
 		{#if tags.length > 0}
-			<div class="tags">
+			<div class="mt-3 flex flex-wrap gap-2">
 				{#each tags as tag}
-					<span class="badge">{tag}</span>
+					<span
+						class="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+						>{tag}</span
+					>
 				{/each}
 			</div>
 		{/if}
-		<div class="card-actions">
-			<a class="btn" href={url} target="_blank" rel="noopener noreferrer">
-				{buttonText}
-			</a>
+	</article>
+	<!-- Footer -->
+	<footer class="px-6 pb-6">
+		<div class="flex flex-row-reverse">
+			<span class="text-primary text-sm font-medium">{buttonText}</span>
 		</div>
-	</div>
-</div>
-
-<style>
-	.card {
-		background: white;
-		border-radius: 0.5rem;
-		box-shadow:
-			0 10px 15px -3px rgba(0, 0, 0, 0.1),
-			0 4px 6px -2px rgba(0, 0, 0, 0.05);
-		overflow: hidden;
-		max-width: 24rem;
-	}
-
-	figure {
-		width: 100%;
-		height: 12rem;
-		overflow: hidden;
-		margin: 0;
-	}
-
-	figure img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.card-body {
-		padding: 1.5rem;
-	}
-
-	.card-title {
-		font-size: 1.25rem;
-		font-weight: bold;
-		margin-bottom: 0.5rem;
-		color: #1f2937;
-	}
-
-	.description {
-		color: #6b7280;
-		margin-bottom: 1rem;
-	}
-
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-bottom: 1rem;
-	}
-
-	.badge {
-		padding: 0.25rem 0.75rem;
-		font-size: 0.875rem;
-		border: 1px solid #3b82f6;
-		color: #3b82f6;
-		border-radius: 9999px;
-		background: transparent;
-	}
-
-	.card-actions {
-		display: flex;
-		justify-content: flex-end;
-	}
-
-	.btn {
-		padding: 0.5rem 1rem;
-		background: #3b82f6;
-		color: white;
-		text-decoration: none;
-		border-radius: 0.25rem;
-		transition: background-color 0.2s;
-	}
-
-	.btn:hover {
-		background: #2563eb;
-	}
-</style>
+	</footer>
+</a>

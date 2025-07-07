@@ -9,3 +9,4 @@
 @source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
 
 @custom-variant dark (&:where(.dark, .dark *));
+@import '@skeletonlabs/skeleton/themes/mona';
