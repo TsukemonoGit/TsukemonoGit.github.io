@@ -41,7 +41,7 @@
 	});
 </script>
 
-<main class="card border-surface-100-900 h-screen grid-cols-[auto_1fr] overflow-y-auto border">
+<main class=" h-screen overflow-y-auto border">
 	<Navigation.Rail
 		expanded={isExpansed}
 		width={'w-12'}
@@ -75,8 +75,8 @@
 	</Navigation.Rail>
 
 	<div
-		class={`mx-auto max-w-screen-2xl flex-1 px-4 py-6 ${
-			isExpansed ? 'pl-62' : 'pl-14'
+		class={`mx-auto max-w-screen-2xl flex-1 py-6 md:pr-4 ${
+			isExpansed ? 'pl-62' : 'pl-12'
 		} transition-all duration-100 ease-in-out`}
 	>
 		{@render children()}
