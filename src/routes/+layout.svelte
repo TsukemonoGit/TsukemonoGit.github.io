@@ -41,11 +41,11 @@
 	});
 </script>
 
-<div class="card border-surface-100-900 h-screen grid-cols-[auto_1fr] overflow-y-auto border">
+<main class="card border-surface-100-900 h-screen grid-cols-[auto_1fr] overflow-y-auto border">
 	<Navigation.Rail
 		expanded={isExpansed}
 		width={'w-12'}
-		classes={`z-10 fixed transition-all duration-300 ease-in-out`}
+		classes={`z-10 fixed transition-all duration-100 ease-in-out`}
 	>
 		{#snippet header()}
 			<Navigation.Tile
@@ -59,7 +59,12 @@
 		{/snippet}
 		{#snippet tiles()}
 			{#each navigationItems as item}
-				<Navigation.Tile labelExpanded={$t(`${item.id}.label`)} href={item.href} classes="h-12">
+				<Navigation.Tile
+					labelExpanded={$t(`${item.id}.label`)}
+					href={item.href}
+					classes="h-12"
+					expandedClasses="break-keep overflow-x-hidden whitespace-pre"
+				>
 					<span class="text-xl">{item.emoji}</span>
 				</Navigation.Tile>
 			{/each}
@@ -69,11 +74,11 @@
 		{/snippet}
 	</Navigation.Rail>
 
-	<main
+	<div
 		class={`mx-auto max-w-screen-2xl flex-1 px-4 py-6 ${
 			isExpansed ? 'pl-62' : 'pl-14'
-		} transition-all duration-300 ease-in-out`}
+		} transition-all duration-100 ease-in-out`}
 	>
 		{@render children()}
-	</main>
-</div>
+	</div>
+</main>

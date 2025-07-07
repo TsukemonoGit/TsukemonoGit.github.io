@@ -1,5 +1,5 @@
 {
-	"overview": { "description": "作ったものとかやったこととか" },
+	"overview": { "description": "作ったものとかやったこととか", "label": "概要" },
 	"games": {
 		"neko": {
 			"title": "ネコダッシュ",
