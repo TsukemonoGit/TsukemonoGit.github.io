@@ -1,14 +1,14 @@
 {
 	"overview": { "description": "作ったものとかやったこととか", "label": "概要" },
 	"games": {
-		"neko": {
-			"title": "ネコダッシュ",
-			"description": "ネコが走る2Dアクションゲームです。",
+		"block-wo-wakuni-hame": {
+			"title": "ぶろっくをわくにはめるやつ",
+			"description": "パズルゲーム",
 			"link_text": "プレイする"
 		},
-		"puzzle_rpg": {
-			"title": "パズルRPG",
-			"description": "戦略と運で戦うRPG。",
+		"online-are": {
+			"title": "おんらいんりばーし",
+			"description": "",
 			"link_text": "ゲームを開始"
 		},
 		"label": "ゲーム",
@@ -16,10 +16,15 @@
 		"description": "個人で制作したゲーム作品の一覧です。"
 	},
 	"nostr": {
-		"note_viewer": {
-			"title": "Nostrノートビューア",
-			"description": "Nostrノートを一覧・検索できます。",
-			"link_text": "ツールを見る"
+		"lumilumi": {
+			"title": "るみるみ",
+			"description": "Nostr Web Client モバイル対応",
+			"link_text": "見る"
+		},
+		"makimono": {
+			"title": "まきもの",
+			"description": "Long Form Content Editor",
+			"link_text": "見る"
 		},
 		"label": "Nostrツール",
 		"title": "Nostr関連ツール",

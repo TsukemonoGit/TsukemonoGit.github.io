@@ -9,10 +9,7 @@
 	const descriptionKey = `${category}.${id}.description`;
 </script>
 
-<a
-	href={url}
-	class="bg-base-100 border-surface-200 block overflow-hidden rounded-xl border p-0 shadow-md transition-shadow duration-300 hover:shadow-lg"
->
+<div class="bg-base-100 border-surface-200 block overflow-hidden rounded-xl border p-0 shadow-md">
 	<!-- Header -->
 	<header
 		class="bg-surface-100-900 flex aspect-[21/9] w-full items-center justify-center overflow-hidden"
@@ -38,7 +35,7 @@
 		{#if tags.length > 0}
 			<div class="mt-3 flex flex-wrap gap-2">
 				{#each tags as tag}
-					<span class="btn btn-sm preset-filled-primary-500 rounded-md">{$t(tag)}</span>
+					<span class="badge preset-outlined-secondary-500 rounded-md">{$t(tag)}</span>
 				{/each}
 			</div>
 		{/if}
@@ -48,8 +45,11 @@
 
 	<footer class="flex min-h-[48px] items-center justify-between gap-4 px-6 py-4">
 		<small class="opacity-60">{date}</small>
-		<span class="btn preset-filled-primary-500 text-primary text-sm font-medium">
+		<a
+			href={url}
+			class="btn preset-filled-primary-500 text-primary text-sm font-medium transition-shadow duration-100 hover:shadow-lg"
+		>
 			{$t(`${category}.${id}.link_text`, 'common.view')}
-		</span>
-	</footer></a
->
+		</a>
+	</footer>
+</div>

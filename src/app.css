@@ -14,3 +14,7 @@
 main {
 	scroll-behavior: smooth;
 }
+
+@theme {
+	--breakpoint-xs: 30rem;
+}

@@ -227,6 +227,28 @@ export const categoryData: CategoryData[] = [
 			darkText: 'dark:text-emerald-400',
 			darkTextSecondary: 'dark:text-emerald-300'
 		}
+	},
+	// categoryDataに追加する項目
+	{
+		id: 'nostr-posts',
+		icon: 'MessageCircle',
+		iconColorClass: 'text-violet-600 dark:text-violet-400',
+		href: '#nostr-posts',
+		showInOverview: true,
+		showInNavigation: true,
+		showCountInNavigation: false, // 投稿数は動的なので固定カウントは表示しない
+		colors: {
+			from: 'from-violet-50',
+			to: 'to-violet-100',
+			border: 'border-violet-200',
+			text: 'text-violet-600',
+			textSecondary: 'text-violet-700',
+			darkFrom: 'dark:from-violet-900/20',
+			darkTo: 'dark:to-violet-800/20',
+			darkBorder: 'dark:border-violet-700/50',
+			darkText: 'dark:text-violet-400',
+			darkTextSecondary: 'dark:text-violet-300'
+		}
 	}
 ];
 

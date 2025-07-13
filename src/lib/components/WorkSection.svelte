@@ -5,6 +5,7 @@
 	import { t } from '@konemono/svelte5-i18n';
 	import LinkCard from './LinkCard.svelte';
 	import { icons } from '@lucide/svelte';
+	import NostrTools from './NostrTools.svelte';
 
 	const categoryData = enrichCategoryData(); // items付き
 </script>
@@ -25,11 +26,24 @@
 					</div>
 				</div>
 
-				<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+				<div class="xs:grid-cols-2 grid gap-6 md:grid-cols-3 2xl:grid-cols-4">
 					{#if category.id === 'links'}
 						{#each category.items as work, index}
 							<LinkCard {work} />
 						{/each}
+					{:else if category.id === 'nostr-posts'}
+						<!-- Nostr投稿の場合は nostr-list コンポーネントを使用 -->
+						{#await import('@konemono/nostr-web-components') then}
+							<div class="col-span-full">
+								<nostr-list
+									filters={'[{"kinds":[1],"limit":10,"authors":["84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5"]}]'}
+									limit="10"
+									height="400px"
+								>
+								</nostr-list>
+							</div>{/await}
+					{:else if category.id === 'nostr'}
+						<NostrTools />
 					{:else}
 						{#each category.items as work, index}
 							<div class="animate-fade-in" style={`animation-delay: ${index * 0.1}s`}>

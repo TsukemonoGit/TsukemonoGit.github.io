@@ -4,7 +4,7 @@
 	import '../app.css';
 	import { Navigation } from '@skeletonlabs/skeleton-svelte';
 	import LightSwitch from '$lib/components/LightSwitch.svelte';
-	import { categoryStats, getNavigationCategories } from '$lib/data/state';
+	import { categoryData, categoryStats } from '$lib/data/state';
 	import { t } from '@konemono/svelte5-i18n';
 	import '$lib/i18n/index.ts';
 	import { icons } from '@lucide/svelte';
@@ -16,8 +16,6 @@
 	function toggleExpanded() {
 		isExpansed = !isExpansed;
 	}
-
-	const navigationItems = getNavigationCategories(categoryStats);
 
 	// 画面幅のしきい値を設定（例: 1200px以上なら展開）
 	const EXPANDED_BREAKPOINT = 1200;
@@ -59,7 +57,7 @@
 			</Navigation.Tile>
 		{/snippet}
 		{#snippet tiles()}
-			{#each navigationItems as item}
+			{#each categoryData as item}
 				{@const Icon = icons[item.icon as keyof typeof icons] ?? null}
 				<Navigation.Tile
 					labelExpanded={$t(`${item.id}.label`)}

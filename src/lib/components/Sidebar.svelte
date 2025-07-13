@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { categoryStats, getNavigationCategories } from '$lib/data/state';
+	import { categoryData, categoryStats } from '$lib/data/state';
 	import { t } from '@konemono/svelte5-i18n';
 	import LightSwitch from './LightSwitch.svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
+
+	import { icons } from '@lucide/svelte';
 	onMount(() => {
 		console.log('onMount');
 	});
@@ -15,9 +17,6 @@
 	beforeNavigate((e) => {
 		console.log(e);
 	});
-
-	// ナビゲーション用のカテゴリーデータを取得
-	const navigationItems = getNavigationCategories(categoryStats);
 
 	function handleNavClick(event: Event, href: string) {
 		console.log('Clicked:', href); // デバッグ用
@@ -57,15 +56,17 @@
 		>
 			<span class="text-xl">TOP</span>
 		</a>
-		{#each navigationItems as item}
+		{#each categoryData as item}
+			{@const Icon = icons[item.icon as keyof typeof icons] ?? null}
 			<a
 				onclick={(e) => handleNavClick(e, item.href)}
 				href={item.href}
 				class="nav-link hover:bg-base-200 flex items-center gap-3 rounded-lg p-3 transition-colors"
-			>
-				<span class="text-xl">{item.emoji}</span>
+				>{#if Icon}
+					<Icon class={`h-5 w-5 ${item.iconColorClass}`} />{/if}
+
 				<div class="flex-1">
-					<span class="font-medium">{$t(item.nameKey)}</span>
+					<span class="font-medium">{$t(item.id)}</span>
 				</div>
 			</a>
 		{/each}
