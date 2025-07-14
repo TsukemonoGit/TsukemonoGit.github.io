@@ -1,8 +1,9 @@
 // scripts/preprocess-data.ts
 import fs from 'fs/promises';
 import path from 'path';
-import Papa from 'papaparse';
-
+//import Papa from 'papaparse';CSV
+//ExcelJS xlsx用
+import ExcelJS from 'exceljs';
 
 // 小分類の定義
  const minorCategories = [
@@ -43,7 +44,7 @@ function safeTrim(value) {
 
 // 大分類・小分類を正規化する関数
 function normalizeMajorCategory(category) {
-  const normalized = category.trim();
+  const normalized = safeTrim(category);
   if (majorCategories.includes(normalized)) {
     return normalized;
   }
@@ -51,7 +52,7 @@ function normalizeMajorCategory(category) {
 }
 
 function normalizeMinorCategory(category) {
-  const normalized = category.trim();
+  const normalized = safeTrim(category);
   if (minorCategories.includes(normalized )) {
     return normalized ;
   }
@@ -120,6 +121,7 @@ export function processProjectData(rawData ){
       id: `project-${index}`,
       title: safeTrim(item.Title),
       url: safeTrim(item.Url),
+      pubkey:safeTrim(item['Nostr Publickey']),
       description: safeTrim(item.Desc),
       source: safeTrim(item.Source),
       date: safeTrim(item['Date']),
@@ -134,6 +136,49 @@ export function processProjectData(rawData ){
   });
 }
 
+
+// Excel ファイルからデータを読み込む関数
+async function loadExcelData(xlsxPath) {
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.readFile(xlsxPath);
+  const worksheet = workbook.worksheets[0];
+
+  const headers = [];
+  worksheet.getRow(1).eachCell((cell, colNumber) => {
+    headers[colNumber - 1] = safeTrim(String(cell.value ?? ''));
+  });
+
+  const data= [];
+
+  worksheet.eachRow((row, rowNumber) => {
+    if (rowNumber === 1) return; // ヘッダ行はスキップ
+    const item = {};
+    row.eachCell((cell, colNumber) => {
+      const header = headers[colNumber - 1];
+      item[header] = safeTrim(String(cell.value ?? ''));
+    });
+    data.push(item);
+  });
+
+  return data;
+}
+
+async function main() {
+  const xlsxPath = path.resolve('static/data.xlsx');
+  const jsonPath = path.resolve('static/data.json');
+
+  const rawData = await loadExcelData(xlsxPath);
+  const processed = processProjectData(rawData); // 既存の関数を再利用
+  await fs.writeFile(jsonPath, JSON.stringify(processed, null, 2), 'utf-8');
+
+  console.log(`✅ XLSX -> JSON 変換完了: ${jsonPath}`);
+}
+
+main().catch((err) => {
+  console.error('❌ データ変換に失敗:', err);
+  process.exit(1);
+});
+/* 
 async function main() {
   const csvPath = path.resolve('static/data.csv');
   const jsonPath = path.resolve('static/data.json');
@@ -151,3 +196,4 @@ main().catch((err) => {
   console.error('❌ データ変換に失敗:', err);
   process.exit(1);
 });
+ */
