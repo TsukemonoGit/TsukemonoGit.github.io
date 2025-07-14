@@ -42,9 +42,6 @@
 			{/each}
 		</div>
 	{/if}
-	<div class="project-date">
-		{project.date}
-	</div>
 </div>
 
 <style>
