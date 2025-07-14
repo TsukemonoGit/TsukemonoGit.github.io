@@ -1,0 +1,79 @@
+Title,Url,Desc,Source,Date(主要開発期間？),ジャンル１,ジャンル２,他キーワード,分類
+@konemono/nostr-web-components,https://tsukemonogit.github.io/nostr-web-components/,Webアプリケーションに簡単にNostrプロトコル機能を統合できる、軽量で使いやすいWeb Componentsライブラリです。,https://github.com/TsukemonoGit/nostr-web-components,Jul.2025,Nostr,WebComponentライブラリ？,Svelte、 rx-nostr nostr-content-parser,WebComponentライブラリ
+@konemono/nostr-content-parser,デモのサイト公開するようにする？,"Parse Nostr content into structured tokens. Installation
+npm install @konemono/nostr-content-parser",https://github.com/TsukemonoGit/nostr-content-parser,Jun.2025,Nostr,ライブラリ？,Parser,ライブラリ
+@konemono/svelte5-i18n,,"svelte5 の i18n Install
+npm i @konemono/svelte5-i18n",https://github.com/TsukemonoGit/sve5-i18n,May.2025,i18n,ライブラリ？,i18n、 Svelte5,ライブラリ
+Lumilumi,https://lumilumi.app,Nostr Web Client 継続開発中,https://github.com/TsukemonoGit/lumilumi,Jun.2024 - 2025,Nostr,WebApp,nostr、 svelte、 Svelte5、 sveltekit、 melt-ui、 typescript、 rx-nostr,Webアプリ
+MAKIMONO,https://makimono.lumilumi.app/,Nostr Long-Form Content Editor NIP-23,https://github.com/TsukemonoGit/longFormEditor,May 2025,Nostr,WebApp,Skeleton、 Svelte5、 bytemd ,Webアプリ
+Nostr Follow Organizer,https://tsukemonogit.github.io/NFO/,,https://github.com/TsukemonoGit/NFO,Nov.2024,Nostr,WebApp,sveltejs、@konemono/svelte5-i18n、 @konemono/nostr-share-component,Webアプリ
+Nostr Share Component,https://tsukemonogit.github.io/nostr-share-component/,,https://github.com/TsukemonoGit/nostr-share-component,"Feb , 2025",Nostr,WebComponentライブラリ？,svelte,WebComponentライブラリ
+Luminostr,https://tsukemonogit.github.io/luminostr/,特定のkindの置換可能（replaceable）イベントをいろんなリレーから探しだして、特定の時点でのイベントで上書きする（現在時刻で再書込みする）また、手持ちのローカルJSONファイルで上書きする バックアップツール,https://tsukemonogit.github.io/luminostr/,May.2024,Nostr,WebApp,nostr、 solidjs、 typescript、 SUID、 GithubPages,Webアプリ
+nostr-iroiro-bot,https://tsukemonogit.github.io/iroirotest/,Nostr関連の情報を定期的に投稿するBotとそれ用のサイト,https://github.com/TsukemonoGit/nostr-iroiro-bot,"Feb , 2024",Nostr,Bot,nostr、 bot、 raspberrypi、 GithubPages、 javascript、 Node.js、 cron,Bot
+NAKE,https://tsukemonogit.github.io/nake-website/,NOSTRの hexid⇔NIP-19 (bech32-encoded entities)相互変換可能なウェブ拡張機能,https://github.com/TsukemonoGit/nake,Jun.2024,Nostr,WebExtention,nostr、 solidjs、 typescript、 WebExtension、 WXT,ブラウザ拡張
+random mdn docs bot,,https://developer.mozilla.org/ja/docs/Web のサイトからランダムのページを一定時間間隔でNostrにポスト,https://github.com/TsukemonoGit/mdn_test,"Apr , 2024",Nostr,Bot,nostr、 bot、 python、 githubActions、 サブモジュール,Bot
+"React Reference Bot
+",,reactのreference ( https://ja.react.dev/reference/react ) からランダムでポストするかもしれないbot,,"Apr, 2024",Nostr,Bot,nostr、 bot、 python、 githubActions、 サブモジュール,Bot
+Nostr Bookmark Recovery Tool,https://nostr-bookmark-recovery-tool.vercel.app/,Nostrの消失しがちなブックマークを簡単に（何処かのリレーに古いデータが残っていれば）リカバリーできるツール,https://github.com/TsukemonoGit/nos-bookmark-areyatu,,Nostr,WebApp,solidjs、 SUID、 nostr、 typescript、 vercel,Webアプリ
+profileを修正するやつ,https://nos-profile-arekore.vercel.app/,Nostrのプロフィールのcontentの内容を修正するツール,https://github.com/TsukemonoGit/nos-profile-arekore,,Nostr,WebApp,solidjs、 bootstrap、 nostr、 typescript、 vercel,Webアプリ
+fofo,,"アルフォートを食べすぎてしまうのを防止するために、食べた個数を10分毎にチェックしてNostrに投稿するBot\nロードセル（5 kg）+ HX711 \nカゴは余ってたエコクラフトで手作り\nボタンとLEDと7セグメントLEDもつけてみた,",https://github.com/TsukemonoGit/fofo-weight,"Apr, 2024",Nostr,Bot,python、 raspberrypi、 nostr、 bot,Bot
+NostViewstr(のすとびうあ),https://nostviewstr.vercel.app/,Nostr上の様々なデータを閲覧、編集できるアプリ\nモバイル通信環境のために、画像非表示などの通信量を節約できる設定がある,https://github.com/TsukemonoGit/NostViewstr,"Nov , 2023",Nostr,WebApp," 
+      nostr、
+      svelte、
+      sveltekit、
+      skeletoncss、
+      typescript、
+      vercel、
+    ",Webアプリ
+Nostr Note Duplicater,https://dupstr.vercel.app/,Nostr上のあるリレーに存在するノートを別のリレーに複製（ブロードキャスト）するアプリ,https://github.com/TsukemonoGit/dupstr,"Aug, 2023",Nostr,WebApp,nostr、 solidjs、 vercel、 typescript,Webアプリ
+ぶくまびうあ,https://nostr-bookmark-viewer3.vercel.app/,のすとびうあでもブックマークの閲覧編集はできるが、Bookmarkはkindが複数存在するため、ブックマーク関連のkindを集めてぶくまびうあとした。,https://github.com/TsukemonoGit/nostr-bookmark-viewer3,"Sep, 2023",Nostr,WebApp," 
+      nostr、
+      svelte、
+      sveltekit、
+      skeletoncss、
+      typescript、
+      vercel、
+    ",Webアプリ
+nostr-monoGazo-bot,https://tsukemonogit.github.io/nostr-monoGazo-bot/,Nostrに投稿された もの ₍ ･ᴗ･ ₎ のイラストとか、₍ ･ᴗ･ ₎ っぽい写真つきの投稿を収集して、特定のワードに反応して画像を投稿したりするBot\nついでにサイトも作成\nNostrをやっていない人にも雰囲気を伝えるために、実際のNostrのポストも表示している。特定のブックマークに追加された画像を検知してもの画像に追加する機能も追加。,https://github.com/TsukemonoGit/nostr-monoGazo-bot," Sep, 2023",Nostr,Bot," 
+      nostr、
+      bot、
+      raspberrypi、
+      solidjs、
+      GithubPages、
+      javascript、
+      typescript、
+      pandacss、
+      Node.js、
+      GoogleSheetsAPI、
+    ",Bot
+うちの温度と湿度と気圧Bot,https://tsukemonogit.github.io/M5MyRoomNostr/,"M5Stack Core2 と 温湿度気圧センサーユニット を使って、部屋の温湿度気圧情報をNostrに一時間おきに投稿するBot\n公開されるため、温度の上げ過ぎ下げすぎに気をつけることができる。
+https://zenn.dev/konemono/articles/4fafb0d14ffcbd 記事も書いた",https://github.com/TsukemonoGit/M5MyRoomNostr,May.2023,Nostr,Bot,Nostr、 bot、 M5 stack、 microPython,Bot
+ぶろっくをわくにはめるやつ,https://unityroom.com/games/pu,ブロックを枠にはめるゲーム\nこういうゲームの配信をしているところを見て作ってみた\nブロックの立体感を出すためにblenderで素材を作成\n出口（ドア）は手書き,,Jan.2023,Game,,Unity、 C#、 blender,ゲーム
+ぱたぱた,https://unityroom.com/games/ptpt,ライツアウトのようなゲーム\nパズロムという雑誌に収録されていた ぱたぱた というゲームをUnityで再現し、アレンジを加えたもの\nブロックの立体感を出すためにblenderで素材を作成,https://github.com/TsukemonoGit/patapata,Jun.2022,Game,,Unity、 C#、 blender、 パズロム,ゲーム
+りばーし,https://unityroom.com/games/onlineothelloo,オンライン対戦できるリバーシ\n制限時間を設定することができ、制限時間を過ぎると適当な場所に勝手に置かれるようになっている,https://github.com/TsukemonoGit/OthelloOnline,Sep.2022,Game,,Unity、 C#、 blender、 online,ゲーム
+buatuihodogood,https://unityroom.com/games/buatuihodogood,とある分厚い机で配信をしている方をリスペクトしたクリックゲーム\n一部キャラクター、素材はblenderで自作,,Jul.2022,Game,カシふぁん,Unity、 C#、 blender、 online,ゲーム
+かしふぁん２,https://unityroom.com/games/kashifan2,とある分厚い机で配信をしている方をリスペクトした横スクロールゲーム\n途中まで\nキャラクター、素材はblenderで自作,,Mar.2022,Game,カシふぁん,Unity、 C#、 blender,ゲーム
+カシファン,https://unityroom.com/games/fancolle,とある分厚い机で配信をしている方をリスペクトした3Dゲーム\nキャラクター、素材はblenderで自作\nデータをぶっ飛ばしながら作成し、gitに手を出しはじめた頃,https://github.com/TsukemonoGit/wakeUpVer2,Jul.2022,Game,カシふぁん,Unity、 C#、 blender,ゲーム
+ファンズっちWindowsマウスカーソル等,https://github.com/TsukemonoGit/TsukemonoGit.github.io/releases/tag/1.0,マウスカーソルとしめじスキン,,Aug. 2022,Cursor,カシふぁん,cursor、 デスクトップマスコット,
+ふりせる,https://unityroom.com/games/test_game_test,フリーセル,,Jan.2022,Game,,Unity、 C#,ゲーム
+tohu,https://unityroom.com/games/tohu,パズロムという雑誌に収録されていた スクールユミちゃん というゲームをUnityで再現したもの\n元はパソコンゲームだが、スマホでもプレイできるようにボタンを設置\n素材はほぼほぼExcelで作成,https://github.com/TsukemonoGit/scym,Dec.2021,Game,,C#、 Unity、 パズロム,ゲーム
+そーとするやつ,https://unityroom.com/games/sort_suruyatu,スマホゲームストアでよく見るゲーム,,Dec.2021,Game,,Unity、 C#,ゲーム
+てとりす,https://unityroom.com/games/teto,初めてUnityで作ったゲーム\nテトラ以外のミノも設定できる\nホールドもできる,,Oct.2021,Game,,Unity、 C#,ゲーム
+MyTimer,https://tsukemonogit.github.io/Timer/,通知音を設定できる、メモ付きでタイマー情報を保存できる Windows Software,https://github.com/TsukemonoGit/Timer,Sep.2022,Software,,C#,ソフトウェア
+最自由研究2022,https://tsukemonogit.github.io/Freest2022/,ゲームとカーソル倒錯性で提出 アーカイブはこちら→（URLはって） https://kashiwooo.wixsite.com/reserch,https://github.com/TsukemonoGit/Freest2022,Aug. 2022,Article？,カシふぁん,,記事
+NIPs Check Bot,,"NIPs のOpenなプルリクエストの中からランダムで二時間に一回Nostrに投稿する
+NIPsの中からランダムで二時間に一回Nostrに投稿する",https://github.com/TsukemonoGit/nipschecker,Mar.2025,Nostr,Bot,,Bot
+じほうちゃん,,"これが一番早いと思います。
+アイコンはマウス書き",https://github.com/TsukemonoGit/jihou-chan,Feb.2023,Nostr,Bot,,Bot
+"Hello Nostr, Yo Bluesky 3
+未来を担う分散型SNS",https://books.428lab.net/book/004/,技術書典17 もののツールたち,,Nov. 2024,Article？,Nostr,,記事
+"Enjoy 分散型SNS
+メタクソ化の特効薬は分散型だけ！",https://books.428lab.net/book/005/,"技術書典18
+Nostrで助成金もらった話 申請編
+Nostrで助成金もらった話 税務署編",,May. 2025,Article？,Nostr,,記事
+Zenn,https://zenn.dev/konemono,Nostrでいろいろやった話とかの記事,,,Article？,アカウント？,,記事
+Github,https://github.com/TsukemonoGit,tsukemonoGit,,,アカウント？,Github,,
+Nostr,,mono,,,アカウント？,Nostr,,
+Unityroom,https://unityroom.com/users/ltoyvre,ltoyvre,,,アカウント？,Game,,
+Bluesky,https://bsky.app/profile/mono.bsky.social,mono,,,アカウント？,Bluesky,,
+npm,https://www.npmjs.com/~konemono,konemono,,,アカウント？,npm,,
