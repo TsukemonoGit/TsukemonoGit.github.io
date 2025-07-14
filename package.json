@@ -3,8 +3,9 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
+		"build": "npm run preprocess && vite build",
+		"preprocess": "node scripts/preprocess-data.js",
+		"dev": "npm run preprocess && vite dev",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -26,7 +27,6 @@
 	"type": "module",
 	"dependencies": {
 		"@konemono/nostr-web-components": "^0.0.28",
-		"exceljs": "^4.4.0",
-		"papaparse": "^5.5.3"
+		"exceljs": "^4.4.0"
 	}
 }

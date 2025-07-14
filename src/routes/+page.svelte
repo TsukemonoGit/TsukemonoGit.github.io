@@ -1,9 +1,19 @@
 <!--+page.svelte-->
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { loadCSVData, processProjectData, groupByCategoryHierarchy } from '$lib/dataParser';
-	import type { ProcessedProject, MajorCategory, MinorCategory, CategoryHierarchy } from '$lib/types';
-	import { majorCategories, minorCategories, majorCategoryConfigs, minorCategoryConfigs } from '$lib/types';
+	import { groupByCategoryHierarchy } from '$lib/dataParser';
+	import type {
+		ProcessedProject,
+		MajorCategory,
+		MinorCategory,
+		CategoryHierarchy
+	} from '$lib/types';
+	import {
+		majorCategories,
+		minorCategories,
+		majorCategoryConfigs,
+		minorCategoryConfigs
+	} from '$lib/types';
 
 	let projects: ProcessedProject[] = $state([]);
 	let categoryHierarchy: CategoryHierarchy = $state({});
@@ -32,27 +42,28 @@
 
 			// 小分類フィルタ
 			if (selectedMinorCategory !== 'all') {
-				filteredProjects = filteredProjects.filter(project => 
-					project.minorCategory === selectedMinorCategory
+				filteredProjects = filteredProjects.filter(
+					(project) => project.minorCategory === selectedMinorCategory
 				);
 			}
 
 			// 検索フィルタ
 			if (searchQuery) {
 				const query = searchQuery.toLowerCase();
-				filteredProjects = filteredProjects.filter((project) => 
-					project.title.toLowerCase().includes(query) ||
-					project.description.toLowerCase().includes(query) ||
-					project.primaryGenre.toLowerCase().includes(query) ||
-					project.secondaryGenre.toLowerCase().includes(query) ||
-					project.keywords.some((k) => k.toLowerCase().includes(query))
+				filteredProjects = filteredProjects.filter(
+					(project) =>
+						project.title.toLowerCase().includes(query) ||
+						project.description.toLowerCase().includes(query) ||
+						project.primaryGenre.toLowerCase().includes(query) ||
+						project.secondaryGenre.toLowerCase().includes(query) ||
+						project.keywords.some((k) => k.toLowerCase().includes(query))
 				);
 			}
 
 			if (filteredProjects.length > 0) {
 				// フィルタ結果の小分類を更新
 				const activeMinors = new Set<MinorCategory>();
-				filteredProjects.forEach(project => {
+				filteredProjects.forEach((project) => {
 					activeMinors.add(project.minorCategory);
 				});
 
@@ -73,18 +84,18 @@
 		const minorStats: Record<MinorCategory, number> = {} as Record<MinorCategory, number>;
 
 		// 初期化
-		majorCategories.forEach(major => {
+		majorCategories.forEach((major) => {
 			majorStats[major] = 0;
 		});
-		minorCategories.forEach(minor => {
+		minorCategories.forEach((minor) => {
 			minorStats[minor] = 0;
 		});
 
 		// カウント
-		Object.values(categoryHierarchy).forEach(majorData => {
+		Object.values(categoryHierarchy).forEach((majorData) => {
 			majorStats[majorData.major] = majorData.projects.length;
-			
-			majorData.projects.forEach(project => {
+
+			majorData.projects.forEach((project) => {
 				minorStats[project.minorCategory]++;
 			});
 		});
@@ -95,15 +106,14 @@
 	// 表示順序（プロジェクト数の多い順）
 	let orderedMajorCategories = $derived.by(() => {
 		const { majorStats } = stats();
-		return majorCategories
-			.filter(category => majorStats[category] > 0)
-			//.sort((a, b) => majorStats[b] - majorStats[a]);// プロジェクト数の多い順にソート
+		return majorCategories.filter((category) => majorStats[category] > 0);
+		//.sort((a, b) => majorStats[b] - majorStats[a]);// プロジェクト数の多い順にソート
 	});
 
 	// 選択された大分類に含まれる小分類
 	let availableMinorCategories = $derived(() => {
 		if (selectedMajorCategory === 'all') {
-			return minorCategories.filter(minor => {
+			return minorCategories.filter((minor) => {
 				const { minorStats } = stats();
 				return minorStats[minor] > 0;
 			});
@@ -118,26 +128,11 @@
 			loading = true;
 			error = '';
 
-			// まずCSVファイルを試す
-			let rawData;
-			try {
-				rawData = await loadCSVData('/data.csv');
-			} catch (csvError) {
-				// CSVが失敗した場合、XLSXファイルを試す
-				try {
-					const { loadXLSXData } = await import('$lib/dataParser');
-					rawData = await loadXLSXData('/data.xlsx');
-				} catch (xlsxError) {
-					throw new Error(
-						'データファイルの読み込みに失敗しました。CSVまたはXLSXファイルを確認してください。'
-					);
-				}
-			}
+			const response = await fetch('/data.json');
+			const raw = await response.json();
 
-			projects = processProjectData(rawData);
+			projects = raw;
 			categoryHierarchy = groupByCategoryHierarchy(projects);
-
-			// 主要大分類を最初から展開
 			expandedCategories = new Set(['アプリケーション', 'ライブラリ・コンポーネント']);
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'データの読み込みに失敗しました';
@@ -205,7 +200,11 @@
 		<div class="filter-section">
 			<div class="filter-group">
 				<label for="major-category-filter">大分類:</label>
-				<select id="major-category-filter" bind:value={selectedMajorCategory} class="category-select">
+				<select
+					id="major-category-filter"
+					bind:value={selectedMajorCategory}
+					class="category-select"
+				>
 					<option value="all">すべて ({projects.length})</option>
 					{#each orderedMajorCategories as category}
 						<option value={category}>
@@ -217,7 +216,11 @@
 
 			<div class="filter-group">
 				<label for="minor-category-filter">小分類:</label>
-				<select id="minor-category-filter" bind:value={selectedMinorCategory} class="category-select">
+				<select
+					id="minor-category-filter"
+					bind:value={selectedMinorCategory}
+					class="category-select"
+				>
 					<option value="all">すべて</option>
 					{#each availableMinorCategories() as category}
 						<option value={category}>
@@ -269,7 +272,9 @@
 					{#if expandedCategories.has(majorCategory)}
 						<div class="major-category-content">
 							{#each majorData.minors as minorCategory}
-								{@const minorProjects = majorData.projects.filter(p => p.minorCategory === minorCategory)}
+								{@const minorProjects = majorData.projects.filter(
+									(p) => p.minorCategory === minorCategory
+								)}
 								{#if minorProjects.length > 0}
 									<div class="minor-category-section">
 										<h3 class="minor-category-header">
@@ -349,8 +354,12 @@
 	}
 
 	@keyframes spin {
-		0% { transform: rotate(0deg); }
-		100% { transform: rotate(360deg); }
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 
 	.error {
