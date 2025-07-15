@@ -59,49 +59,63 @@ function normalizeMinorCategory(category) {
   return '未分類';
 }
 
+
 // 日付文字列を解析する関数
 function parseDate(dateStr) {
   if (!dateStr) return { year: 0, month: 0 };
 
-  const cleanDate = dateStr.replace(/\s+/g, ' ').trim();
+  const cleanDate = dateStr.replace(/\s+/g, '').trim();
 
+  // 月名マッピング
+  const monthMap = {
+    jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
+    jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12
+  };
+
+  // 月名を数値に変換
+  const getMonthNumber = (monthStr) => monthMap[monthStr.toLowerCase()] || 0;
+
+  // 継続中プロジェクト形式: "Jun.2024 - 2025"
+  const rangeMatch = cleanDate.match(/(\w{3})\.(\d{4})\s*-\s*(\d{4})/);
+  if (rangeMatch) {
+    const [, monthStr, startYear] = rangeMatch;
+    return {
+      year: parseInt(startYear),
+      month: getMonthNumber(monthStr)
+    };
+  }
+
+  // 通常形式: "Jul.2025"
+  const normalMatch = cleanDate.match(/(\w{3})\.(\d{4})/);
+  if (normalMatch) {
+    const [, monthStr, yearStr] = normalMatch;
+    return {
+      year: parseInt(yearStr),
+      month: getMonthNumber(monthStr)
+    };
+  }
+
+  // フォールバック処理
   const yearMatch = cleanDate.match(/20(\d{2})/);
   const year = yearMatch ? parseInt(`20${yearMatch[1]}`) : 0;
 
-  const monthPatterns = [
-    { pattern: /jan/i, month: 1 },
-    { pattern: /feb/i, month: 2 },
-    { pattern: /mar/i, month: 3 },
-    { pattern: /apr/i, month: 4 },
-    { pattern: /may/i, month: 5 },
-    { pattern: /jun/i, month: 6 },
-    { pattern: /jul/i, month: 7 },
-    { pattern: /aug/i, month: 8 },
-    { pattern: /sep/i, month: 9 },
-    { pattern: /oct/i, month: 10 },
-    { pattern: /nov/i, month: 11 },
-    { pattern: /dec/i, month: 12 }
-  ];
-
-  let month = 0;
-  for (const { pattern, month: m } of monthPatterns) {
-    if (pattern.test(cleanDate)) {
-      month = m;
-      break;
+  // 月名での検索
+  for (const [monthStr, monthNum] of Object.entries(monthMap)) {
+    if (new RegExp(monthStr, 'i').test(cleanDate)) {
+      return { year, month: monthNum };
     }
   }
 
-  if (month === 0) {
-    const numMonthMatch = cleanDate.match(/(\d{1,2})/);
-    if (numMonthMatch) {
-      const num = parseInt(numMonthMatch[1]);
-      if (num >= 1 && num <= 12) {
-        month = num;
-      }
+  // 数値での月検索
+  const numMonthMatch = cleanDate.match(/(\d{1,2})/);
+  if (numMonthMatch) {
+    const num = parseInt(numMonthMatch[1]);
+    if (num >= 1 && num <= 12) {
+      return { year, month: num };
     }
   }
 
-  return { year, month };
+  return { year, month: 0 };
 }
 
 // データを処理する関数
@@ -109,7 +123,7 @@ export function processProjectData(rawData ){
   return rawData.map((item, index) => {
     const { year, month } = parseDate(item['Date']);
 
-    const keywords = (item.他キーワード ?? '')
+    const keywords = (item.技術・プラットフォーム ?? '')
       .split(/[、,，]/)
       .map((k) => (typeof k === 'string' ? k.trim() : ''))
       .filter((k) => k.length > 0);
@@ -121,12 +135,11 @@ export function processProjectData(rawData ){
       id: `project-${index}`,
       title: safeTrim(item.Title),
       url: safeTrim(item.Url),
-      pubkey:safeTrim(item['Nostr Publickey']),
+      npub:safeTrim(item['npub']),
       description: safeTrim(item.Desc),
       source: safeTrim(item.Source),
       date: safeTrim(item['Date']),
-      primaryGenre: safeTrim(item.ジャンル１),
-      secondaryGenre: safeTrim(item.ジャンル２),
+ 
       keywords,
       majorCategory,
       minorCategory,

@@ -1,14 +1,11 @@
 <script lang="ts">
 	import type { ProcessedProject } from '$lib/types';
-	import { minorCategoryConfigs } from '$lib/types';
 
 	interface Props {
 		project: ProcessedProject;
 	}
 
 	let { project }: Props = $props();
-
-	console.log(project.date);
 </script>
 
 <div class="project-card">
@@ -27,12 +24,6 @@
 	<div class="project-meta">
 		{#if project.date}
 			<span class="project-date">{project.date}</span>
-		{/if}
-		{#if project.primaryGenre}
-			<span class="project-genre">{project.primaryGenre}</span>
-		{/if}
-		{#if project.secondaryGenre}
-			<span class="project-genre">{project.secondaryGenre}</span>
 		{/if}
 	</div>
 	{#if project.keywords.length > 0}

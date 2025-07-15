@@ -1,27 +1,24 @@
 export interface ProjectData {
 	Title: string;
 	Url: string;
-	'Nostr Publickey': string;
+	Npub: string;
 	Desc: string;
 	Source: string;
 	'Date': string;
 	大分類: string;
 	小分類: string;
-	ジャンル１: string;
-	ジャンル２: string;
-	他キーワード: string;
+	技術・プラットフォーム: string;
+
 }
 
 export interface ProcessedProject {
 	id: string;
 	title: string;
 	url: string;
-	pubkey?: string;
+	npub?: string;
 	description: string;
 	source: string;
 	date: string;
-	primaryGenre: string;
-	secondaryGenre: string;
 	keywords: string[];
 	majorCategory: MajorCategory;
 	minorCategory: MinorCategory;

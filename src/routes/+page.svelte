@@ -56,8 +56,6 @@
 					(project) =>
 						project.title.toLowerCase().includes(query) ||
 						project.description.toLowerCase().includes(query) ||
-						project.primaryGenre.toLowerCase().includes(query) ||
-						project.secondaryGenre.toLowerCase().includes(query) ||
 						project.keywords.some((k) => k.toLowerCase().includes(query))
 				);
 			}
