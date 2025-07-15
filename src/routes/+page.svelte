@@ -16,19 +16,23 @@
 	} from '$lib/types';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import AccountSection from '$lib/components/AccountSection.svelte';
+	import data from '$lib/generated/data.json';
 
-	let projects: ProcessedProject[] = $state([]);
-	let categoryHierarchy: CategoryHierarchy = $state({});
-	let loading = $state(true);
-	let error = $state('');
-	let searchQuery = $state('');
-	let selectedMajorCategory = $state<MajorCategory | 'all'>('all');
-	let selectedMinorCategory = $state<MinorCategory | 'all'>('all');
-	let expandedCategories = $state<Set<MajorCategory>>(new Set());
+	let projects: ProcessedProject[] = [...data] as ProcessedProject[];
+	let categoryHierarchy: CategoryHierarchy | null = $state(null);
+	let loading: boolean = $state(true);
+	let error: string = $state('');
+	let searchQuery: string = $state('');
+	let selectedMajorCategory: MajorCategory | 'all' = $state('all');
+	let selectedMinorCategory: MinorCategory | 'all' = $state('all');
+	let expandedCategories: Set<MajorCategory> = $state(new Set());
 
 	// フィルタリングされたプロジェクト
-	let filteredHierarchy = $derived(() => {
-		if (!searchQuery && selectedMajorCategory === 'all' && selectedMinorCategory === 'all') {
+	let filteredHierarchy: CategoryHierarchy | null = $derived.by(() => {
+		if (
+			(!searchQuery && selectedMajorCategory === 'all' && selectedMinorCategory === 'all') ||
+			!categoryHierarchy
+		) {
 			return categoryHierarchy;
 		}
 
@@ -79,7 +83,10 @@
 	});
 
 	// 統計情報
-	let stats = $derived(() => {
+	let stats: {
+		majorStats: Record<MajorCategory, number>;
+		minorStats: Record<MinorCategory, number>;
+	} = $derived.by(() => {
 		const majorStats: Record<MajorCategory, number> = {} as Record<MajorCategory, number>;
 		const minorStats: Record<MinorCategory, number> = {} as Record<MinorCategory, number>;
 
@@ -90,7 +97,7 @@
 		minorCategories.forEach((minor) => {
 			minorStats[minor] = 0;
 		});
-
+		if (!categoryHierarchy) return { majorStats, minorStats };
 		// カウント
 		Object.values(categoryHierarchy).forEach((majorData) => {
 			majorStats[majorData.major] = majorData.projects.length;
@@ -104,22 +111,22 @@
 	});
 
 	// 表示順序（プロジェクト数の多い順）
-	let orderedMajorCategories = $derived.by(() => {
-		const { majorStats } = stats();
+	let orderedMajorCategories: MajorCategory[] = $derived.by(() => {
+		const { majorStats } = stats;
 		return majorCategories.filter((category) => majorStats[category] > 0);
 		//.sort((a, b) => majorStats[b] - majorStats[a]);// プロジェクト数の多い順にソート
 	});
 
 	// 選択された大分類に含まれる小分類
-	let availableMinorCategories = $derived(() => {
+	let availableMinorCategories = $derived.by(() => {
 		if (selectedMajorCategory === 'all') {
 			return minorCategories.filter((minor) => {
-				const { minorStats } = stats();
+				const { minorStats } = stats;
 				return minorStats[minor] > 0;
 			});
 		}
 
-		const majorData = categoryHierarchy[selectedMajorCategory];
+		const majorData = categoryHierarchy?.[selectedMajorCategory];
 		return majorData ? majorData.minors : [];
 	});
 
@@ -128,10 +135,10 @@
 			loading = true;
 			error = '';
 
-			const response = await fetch('/data.json');
+			/* const response = await fetch('/data.json');
 			const raw = await response.json();
 
-			projects = raw;
+			projects = raw; */
 			categoryHierarchy = groupByCategoryHierarchy(projects);
 			expandedCategories = new Set(['アプリケーション', 'ライブラリ・コンポーネント']);
 		} catch (e) {
@@ -208,7 +215,7 @@
 					<option value="all">すべて ({projects.length})</option>
 					{#each orderedMajorCategories as category}
 						<option value={category}>
-							{majorCategoryConfigs[category].name} ({stats().majorStats[category]})
+							{majorCategoryConfigs[category].name} ({stats.majorStats[category]})
 						</option>
 					{/each}
 				</select>
@@ -222,9 +229,9 @@
 					class="category-select"
 				>
 					<option value="all">すべて</option>
-					{#each availableMinorCategories() as category}
+					{#each availableMinorCategories as category}
 						<option value={category}>
-							{minorCategoryConfigs[category].name} ({stats().minorStats[category]})
+							{minorCategoryConfigs[category].name} ({stats.minorStats[category]})
 						</option>
 					{/each}
 				</select>
@@ -246,7 +253,7 @@
 			{#each orderedMajorCategories as category}
 				<div class="category-stat">
 					<span class="stat-icon">{majorCategoryConfigs[category].icon}</span>
-					<span class="stat-count">{stats().majorStats[category]}</span>
+					<span class="stat-count">{stats.majorStats[category]}</span>
 					<span class="stat-label">{majorCategoryConfigs[category].name}</span>
 				</div>
 			{/each}
@@ -255,7 +262,7 @@
 
 	<div class="projects-container">
 		{#each orderedMajorCategories as majorCategory}
-			{@const majorData = filteredHierarchy()[majorCategory]}
+			{@const majorData = filteredHierarchy?.[majorCategory]}
 			{#if majorData && majorData.projects.length > 0}
 				{#if majorData.major === 'アカウント'}
 					<AccountSection accounts={majorData.projects} />
@@ -304,7 +311,7 @@
 		{/each}
 	</div>
 
-	{#if Object.keys(filteredHierarchy()).length === 0}
+	{#if !filteredHierarchy || Object.keys(filteredHierarchy).length === 0}
 		<div class="no-results">
 			<p>検索条件に一致するプロジェクトが見つかりませんでした。</p>
 		</div>

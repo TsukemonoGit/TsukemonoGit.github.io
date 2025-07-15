@@ -6,7 +6,7 @@
 	}
 
 	let { project }: Props = $props();
-	console.log(project);
+	//console.log(project);
 </script>
 
 <div class="project-card">
@@ -28,7 +28,7 @@
 			</h4>
 			{#if project.npub}
 				<div class="nostr">
-					<nostr-profile display="compact" id={project.npub}></nostr-profile>
+					<nostr-profile display="compact" user={project.npub}></nostr-profile>
 				</div>
 			{/if}
 			{#if project.description}
