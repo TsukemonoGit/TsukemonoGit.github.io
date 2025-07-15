@@ -135,7 +135,7 @@ export function processProjectData(rawData ){
       id: `project-${index}`,
       title: safeTrim(item.Title),
       url: safeTrim(item.Url),
-      npub:safeTrim(item['npub']),
+      npub:safeTrim(item['Npub']),
       description: safeTrim(item.Desc),
       source: safeTrim(item.Source),
       date: safeTrim(item['Date']),
@@ -144,7 +144,8 @@ export function processProjectData(rawData ){
       majorCategory,
       minorCategory,
       year,
-      month
+      month,
+      picture:safeTrim(item['Picture'])
     };
   });
 }

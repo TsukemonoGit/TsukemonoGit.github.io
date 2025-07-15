@@ -8,6 +8,7 @@ export interface ProjectData {
 	大分類: string;
 	小分類: string;
 	技術・プラットフォーム: string;
+	Picture:string;
 
 }
 
@@ -24,6 +25,7 @@ export interface ProcessedProject {
 	minorCategory: MinorCategory;
 	year: number;
 	month: number;
+	picture?:string;
 }
 
 // 大分類の定義

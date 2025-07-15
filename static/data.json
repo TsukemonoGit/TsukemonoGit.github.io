@@ -16,7 +16,8 @@
     "majorCategory": "ライブラリ・コンポーネント",
     "minorCategory": "Web Component",
     "year": 2025,
-    "month": 7
+    "month": 7,
+    "picture": ""
   },
   {
     "id": "project-1",
@@ -33,7 +34,8 @@
     "majorCategory": "ライブラリ・コンポーネント",
     "minorCategory": "ライブラリ",
     "year": 2025,
-    "month": 6
+    "month": 6,
+    "picture": ""
   },
   {
     "id": "project-2",
@@ -50,7 +52,8 @@
     "majorCategory": "ライブラリ・コンポーネント",
     "minorCategory": "ライブラリ",
     "year": 2025,
-    "month": 5
+    "month": 5,
+    "picture": ""
   },
   {
     "id": "project-3",
@@ -71,7 +74,8 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2024,
-    "month": 6
+    "month": 6,
+    "picture": "https://nostpic.com/media/cbcb0e0b602ec3a9adfc6956bfbe3e2bc12379ee13bf8505ce45f1c831d2e52a/419b9c108bea83bdbe5e4a17fd25f4bc401cfca547a49c1e99be2ebec8f5a203.webp"
   },
   {
     "id": "project-4",
@@ -90,7 +94,8 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2025,
-    "month": 5
+    "month": 5,
+    "picture": ""
   },
   {
     "id": "project-5",
@@ -108,7 +113,8 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2024,
-    "month": 11
+    "month": 11,
+    "picture": ""
   },
   {
     "id": "project-6",
@@ -126,7 +132,8 @@
     "majorCategory": "ライブラリ・コンポーネント",
     "minorCategory": "Web Component",
     "year": 2025,
-    "month": 2
+    "month": 2,
+    "picture": ""
   },
   {
     "id": "project-7",
@@ -145,13 +152,14 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2024,
-    "month": 5
+    "month": 5,
+    "picture": ""
   },
   {
     "id": "project-8",
     "title": "nostr-iroiro-bot",
     "url": "https://tsukemonogit.github.io/iroirotest/",
-    "npub": "",
+    "npub": "npub1wgpfshr7xjnur3ytj0vg922nc5jceu3xyp8vjklvanvrvrre995s5lrecv",
     "description": "Nostr関連の情報を定期的に投稿するBotとそれ用のサイト",
     "source": "https://github.com/TsukemonoGit/nostr-iroiro-bot",
     "date": "Feb.2024",
@@ -165,7 +173,8 @@
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
     "year": 2024,
-    "month": 2
+    "month": 2,
+    "picture": ""
   },
   {
     "id": "project-9",
@@ -185,13 +194,14 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "拡張機能",
     "year": 2024,
-    "month": 6
+    "month": 6,
+    "picture": "https://raw.githubusercontent.com/TsukemonoGit/nake/main/contentsample.png"
   },
   {
     "id": "project-10",
     "title": "random mdn docs bot",
     "url": "",
-    "npub": "",
+    "npub": "npub1fuffhzfv7xdrm5htde4mp9e5n6ywn763cq6mzxtetyqvsg66kkasp9zzyz",
     "description": "https://developer.mozilla.org/ja/docs/Web のサイトからランダムのページを一定時間間隔でNostrにポスト",
     "source": "https://github.com/TsukemonoGit/mdn_test",
     "date": "Apr.2024",
@@ -203,13 +213,14 @@
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
     "year": 2024,
-    "month": 4
+    "month": 4,
+    "picture": ""
   },
   {
     "id": "project-11",
     "title": "React Reference Bot",
     "url": "",
-    "npub": "",
+    "npub": "npub1cktfz62n0gf098mq7c4np4g35s6ex42p30ae5ar8d2w32zd24kdqa3j6m7",
     "description": "reactのreference ( https://ja.react.dev/reference/react ) からランダムでポストするかもしれないbot",
     "source": "",
     "date": "Apr.2024",
@@ -221,7 +232,8 @@
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
     "year": 2024,
-    "month": 4
+    "month": 4,
+    "picture": ""
   },
   {
     "id": "project-12",
@@ -240,7 +252,8 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2024,
-    "month": 4
+    "month": 4,
+    "picture": ""
   },
   {
     "id": "project-13",
@@ -260,13 +273,14 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2024,
-    "month": 3
+    "month": 3,
+    "picture": ""
   },
   {
     "id": "project-14",
     "title": "fofo",
     "url": "",
-    "npub": "",
+    "npub": "npub1m054537ssdkqx84va8cv9tankxeestqxk8v95gdvxpwj7n69fslqx4wn3w",
     "description": "アルフォートを食べすぎてしまうのを防止するために、食べた個数を10分毎にチェックしてNostrに投稿するBot\\nロードセル（5 kg）+ HX711 \\nカゴは余ってたエコクラフトで手作り\\nボタンとLEDと7セグメントLEDもつけてみた,",
     "source": "https://github.com/TsukemonoGit/fofo-weight",
     "date": "Apr.2024",
@@ -279,7 +293,8 @@
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
     "year": 2024,
-    "month": 4
+    "month": 4,
+    "picture": ""
   },
   {
     "id": "project-15",
@@ -299,7 +314,8 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2023,
-    "month": 11
+    "month": 11,
+    "picture": ""
   },
   {
     "id": "project-16",
@@ -318,7 +334,8 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2023,
-    "month": 8
+    "month": 8,
+    "picture": ""
   },
   {
     "id": "project-17",
@@ -338,13 +355,14 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
     "year": 2023,
-    "month": 9
+    "month": 9,
+    "picture": ""
   },
   {
     "id": "project-18",
     "title": "nostr-monoGazo-bot",
     "url": "https://tsukemonogit.github.io/nostr-monoGazo-bot/",
-    "npub": "",
+    "npub": "npub1lxrlhyrfdl9sjdvx9xhwhag4d6s95sz3q8z09kgzp0cz73l2ffys9p726u",
     "description": "Nostrに投稿された もの ₍ ･ᴗ･ ₎ のイラストとか、₍ ･ᴗ･ ₎ っぽい写真つきの投稿を収集して、特定のワードに反応して画像を投稿したりするBot\\nついでにサイトも作成\\nNostrをやっていない人にも雰囲気を伝えるために、実際のNostrのポストも表示している。特定のブックマークに追加された画像を検知してもの画像に追加する機能も追加。",
     "source": "https://github.com/TsukemonoGit/nostr-monoGazo-bot",
     "date": "Sep.2023",
@@ -360,13 +378,14 @@
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
     "year": 2023,
-    "month": 9
+    "month": 9,
+    "picture": ""
   },
   {
     "id": "project-19",
     "title": "うちの温度と湿度と気圧Bot",
     "url": "https://tsukemonogit.github.io/M5MyRoomNostr/",
-    "npub": "",
+    "npub": "npub1sm73eqxq0h4mc0ge9ymhkfx5haj6skhjdzh3tndz4n8y2n0kwzlq57nl7v",
     "description": "M5Stack Core2 と 温湿度気圧センサーユニット を使って、部屋の温湿度気圧情報をNostrに一時間おきに投稿するBot\\n公開されるため、温度の上げ過ぎ下げすぎに気をつけることができる。\nhttps://zenn.dev/konemono/articles/4fafb0d14ffcbd 記事も書いた",
     "source": "https://github.com/TsukemonoGit/M5MyRoomNostr",
     "date": "May.2023",
@@ -379,7 +398,8 @@
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
     "year": 2023,
-    "month": 5
+    "month": 5,
+    "picture": ""
   },
   {
     "id": "project-20",
@@ -397,7 +417,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2023,
-    "month": 1
+    "month": 1,
+    "picture": ""
   },
   {
     "id": "project-21",
@@ -415,7 +436,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2022,
-    "month": 6
+    "month": 6,
+    "picture": ""
   },
   {
     "id": "project-22",
@@ -433,7 +455,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2022,
-    "month": 9
+    "month": 9,
+    "picture": ""
   },
   {
     "id": "project-23",
@@ -451,7 +474,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2022,
-    "month": 7
+    "month": 7,
+    "picture": ""
   },
   {
     "id": "project-24",
@@ -469,7 +493,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2022,
-    "month": 3
+    "month": 3,
+    "picture": ""
   },
   {
     "id": "project-25",
@@ -487,7 +512,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2022,
-    "month": 7
+    "month": 7,
+    "picture": ""
   },
   {
     "id": "project-26",
@@ -504,7 +530,8 @@
     "majorCategory": "その他",
     "minorCategory": "未分類",
     "year": 2022,
-    "month": 8
+    "month": 8,
+    "picture": ""
   },
   {
     "id": "project-27",
@@ -521,7 +548,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2022,
-    "month": 1
+    "month": 1,
+    "picture": ""
   },
   {
     "id": "project-28",
@@ -538,7 +566,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2021,
-    "month": 12
+    "month": 12,
+    "picture": ""
   },
   {
     "id": "project-29",
@@ -555,7 +584,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2021,
-    "month": 12
+    "month": 12,
+    "picture": ""
   },
   {
     "id": "project-30",
@@ -572,7 +602,8 @@
     "majorCategory": "ゲーム",
     "minorCategory": "Webゲーム",
     "year": 2021,
-    "month": 10
+    "month": 10,
+    "picture": ""
   },
   {
     "id": "project-31",
@@ -589,7 +620,8 @@
     "majorCategory": "アプリケーション",
     "minorCategory": "ソフトウェア",
     "year": 2022,
-    "month": 9
+    "month": 9,
+    "picture": "https://tsukemonogit.github.io/Timer/image1.png"
   },
   {
     "id": "project-32",
@@ -605,13 +637,14 @@
     "majorCategory": "記事・出版物",
     "minorCategory": "記事",
     "year": 2022,
-    "month": 8
+    "month": 8,
+    "picture": "https://tsukemonogit.github.io/Freest2022/images/logo2.png"
   },
   {
     "id": "project-33",
     "title": "NIPs Check Bot",
     "url": "",
-    "npub": "",
+    "npub": "npub17sysrj0cgny7jtplj50dtzmjng49sxw0st6eqsparpjc0gft07squxl7m4",
     "description": "NIPs のOpenなプルリクエストの中からランダムで二時間に一回Nostrに投稿する\nNIPsの中からランダムで二時間に一回Nostrに投稿する",
     "source": "https://github.com/TsukemonoGit/nipschecker",
     "date": "Mar.2025",
@@ -622,13 +655,14 @@
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
     "year": 2025,
-    "month": 3
+    "month": 3,
+    "picture": ""
   },
   {
     "id": "project-34",
     "title": "じほうちゃん",
     "url": "",
-    "npub": "",
+    "npub": "npub1slszekg4rjlknw3qy69z5s3h45hnnlrrrjt9tr3ffjsqtpj8wsfqfgh8l7",
     "description": "これが一番早いと思います。\nアイコンはマウス書き",
     "source": "https://github.com/TsukemonoGit/jihou-chan",
     "date": "Feb.2023",
@@ -639,7 +673,8 @@
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
     "year": 2023,
-    "month": 2
+    "month": 2,
+    "picture": ""
   },
   {
     "id": "project-35",
@@ -655,7 +690,8 @@
     "majorCategory": "記事・出版物",
     "minorCategory": "記事",
     "year": 2024,
-    "month": 11
+    "month": 11,
+    "picture": ""
   },
   {
     "id": "project-36",
@@ -671,7 +707,8 @@
     "majorCategory": "記事・出版物",
     "minorCategory": "記事",
     "year": 2025,
-    "month": 5
+    "month": 5,
+    "picture": ""
   },
   {
     "id": "project-37",
@@ -685,7 +722,8 @@
     "majorCategory": "アカウント",
     "minorCategory": "未分類",
     "year": 0,
-    "month": 0
+    "month": 0,
+    "picture": ""
   },
   {
     "id": "project-38",
@@ -699,13 +737,14 @@
     "majorCategory": "アカウント",
     "minorCategory": "未分類",
     "year": 0,
-    "month": 0
+    "month": 0,
+    "picture": ""
   },
   {
     "id": "project-39",
     "title": "Nostr",
     "url": "",
-    "npub": "",
+    "npub": "npub1sjcvg64knxkrt6ev52rywzu9uzqakgy8ehhk8yezxmpewsthst6sw3jqcw",
     "description": "mono",
     "source": "",
     "date": "",
@@ -713,7 +752,8 @@
     "majorCategory": "アカウント",
     "minorCategory": "未分類",
     "year": 0,
-    "month": 0
+    "month": 0,
+    "picture": ""
   },
   {
     "id": "project-40",
@@ -727,7 +767,8 @@
     "majorCategory": "アカウント",
     "minorCategory": "未分類",
     "year": 0,
-    "month": 0
+    "month": 0,
+    "picture": ""
   },
   {
     "id": "project-41",
@@ -741,7 +782,8 @@
     "majorCategory": "アカウント",
     "minorCategory": "未分類",
     "year": 0,
-    "month": 0
+    "month": 0,
+    "picture": ""
   },
   {
     "id": "project-42",
@@ -755,6 +797,7 @@
     "majorCategory": "アカウント",
     "minorCategory": "未分類",
     "year": 0,
-    "month": 0
+    "month": 0,
+    "picture": ""
   }
 ]
