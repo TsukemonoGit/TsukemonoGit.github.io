@@ -98,7 +98,7 @@
     "minorCategory": "Webアプリ",
     "year": 2025,
     "month": 5,
-    "picture": ""
+    "picture": "https://raw.githubusercontent.com/TsukemonoGit/longFormEditor/refs/heads/main/static/favicon.png"
   },
   {
     "id": "project-5",
@@ -156,7 +156,7 @@
     "minorCategory": "Webアプリ",
     "year": 2024,
     "month": 5,
-    "picture": ""
+    "picture": "https://raw.githubusercontent.com/TsukemonoGit/luminostr/e8a747d794dd614adbacf5a81c4b882094c2426d/public/favicon.svg"
   },
   {
     "id": "project-8",
@@ -318,7 +318,7 @@
     "minorCategory": "Webアプリ",
     "year": 2023,
     "month": 11,
-    "picture": ""
+    "picture": "https://raw.githubusercontent.com/TsukemonoGit/NostViewstr/refs/heads/main/static/favicon.png"
   },
   {
     "id": "project-16",

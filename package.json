@@ -3,9 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		
 		"preprocess": "node scripts/preprocess-data.js",
-	
 		"dev": "npm run preprocess && vite dev",
 		"build": "npm run preprocess &&  vite build",
 		"preview": "vite preview",
