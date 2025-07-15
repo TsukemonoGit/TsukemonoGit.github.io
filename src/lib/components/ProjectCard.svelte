@@ -29,7 +29,8 @@
 				</h2>
 
 				{#if project.npub}
-					<nostr-profile display="compact" user={project.npub}></nostr-profile>
+					<nostr-profile display="compact" user={project.npub} href={`https://lumilumi.app/{id}`}
+					></nostr-profile>
 				{/if}
 
 				{#if project.description}
