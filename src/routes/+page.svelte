@@ -17,6 +17,7 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import AccountSection from '$lib/components/AccountSection.svelte';
 	import data from '$lib/generated/data.json';
+	import ProjectStats from '$lib/components/ProjectStats.svelte';
 
 	let projects: ProcessedProject[] = [...data] as ProcessedProject[];
 	let categoryHierarchy: CategoryHierarchy | null = $state(null);
@@ -243,22 +244,7 @@
 			<button onclick={collapseAll} class="action-button">すべて折りたたみ</button>
 		</div>
 	</div>
-
-	<div class="stats">
-		<div class="total-projects">
-			<span class="stat-number">{projects.length}</span>
-			<span class="stat-label">プロジェクト</span>
-		</div>
-		<div class="category-counts">
-			{#each orderedMajorCategories as category}
-				<div class="category-stat">
-					<span class="stat-icon">{majorCategoryConfigs[category].icon}</span>
-					<span class="stat-count">{stats.majorStats[category]}</span>
-					<span class="stat-label">{majorCategoryConfigs[category].name}</span>
-				</div>
-			{/each}
-		</div>
-	</div>
+	<ProjectStats {projects} {orderedMajorCategories} {stats} {majorCategoryConfigs} />
 
 	<div class="projects-container">
 		{#each orderedMajorCategories as majorCategory}
@@ -422,60 +408,6 @@
 		background-color: #2563eb;
 	}
 
-	.stats {
-		display: flex;
-		gap: 2rem;
-		margin-bottom: 2rem;
-		padding: 1rem;
-		background-color: #f8fafc;
-		border-radius: 0.5rem;
-		align-items: center;
-	}
-
-	.total-projects {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.stat-number {
-		font-size: 2rem;
-		font-weight: bold;
-		color: #1f2937;
-	}
-
-	.stat-label {
-		font-size: 0.875rem;
-		color: #6b7280;
-	}
-
-	.category-counts {
-		display: flex;
-		gap: 1rem;
-		flex-wrap: wrap;
-	}
-
-	.category-stat {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 0.5rem;
-		background-color: white;
-		border-radius: 0.375rem;
-		min-width: 80px;
-	}
-
-	.stat-icon {
-		font-size: 1.5rem;
-		margin-bottom: 0.25rem;
-	}
-
-	.stat-count {
-		font-size: 1.25rem;
-		font-weight: bold;
-		color: #1f2937;
-	}
-
 	.projects-container {
 		display: flex;
 		flex-direction: column;
@@ -576,15 +508,6 @@
 
 		.category-select {
 			min-width: unset;
-		}
-
-		.stats {
-			flex-direction: column;
-			gap: 1rem;
-		}
-
-		.category-counts {
-			justify-content: center;
 		}
 
 		.projects-grid {
