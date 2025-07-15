@@ -1,0 +1,14 @@
+{
+    "names": {
+      "mono": "84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5",
+      "nazo":"5650178597525e90ea16a4d7a9e33700ac238a1be9dbf3f5093862929d9a1e60",
+      "tm":"87e02cd9151cbf69ba20268a2a4237ad2f39fc631c96558e294ca00586477412",
+      "tm2":"d4ea67859c89cce2a2f25c41f0efc81da8299f086e34eff47d661807dcc8e982",
+      "mono_gazo":"f987fb90696fcb09358629aeebf5156ea05a405101c4f2d9020bf02f47ea4a49",
+      "iroiro":"7202985c7e34a7c1c48b93d882a953c5258cf226204ec95bececd8360c792969",
+        "myRoom":"86fd1c80c07debbc3d1929377b24d4bf65a85af268af15cda2acce454df670be"
+    },
+    "relays": {
+    "84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5": [ "wss://yabu.me","wss://nos.lol","wss://nostr.fediverse.jp","wss://relay.nostr.wirednet.jp" ]
+  }
+  }
