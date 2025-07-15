@@ -26,7 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@konemono/nostr-web-components": "^0.0.30",
+		"@konemono/nostr-web-components": "^0.1.0",
 		"exceljs": "^4.4.0",
 		"papaparse": "^5.5.3"
 	}

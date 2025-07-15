@@ -24,7 +24,7 @@
     "title": "@konemono/nostr-content-parser",
     "url": "デモのサイト公開するようにする？今のところサイト作ってないnpmサイトくらいしか",
     "npub": "",
-    "description": "NostrのContentパーサー。:emoji:とかurlとかnostr:とかで分ける。\nnpm install @konemono/nostr-content-parser",
+    "description": "NostrのContentパーサー。:emoji:とかurlとかnostr:とかで分ける\nnpm install @konemono/nostr-content-parser",
     "source": "https://github.com/TsukemonoGit/nostr-content-parser",
     "date": "Jun.2025",
     "keywords": [
@@ -69,7 +69,9 @@
       "Svelte5",
       "SvelteKit",
       "TypeScript",
-      "rx-nostr"
+      "rx-nostr",
+      "@konemono/nostr-content-parser",
+      "@konemono/svelte5-i18n"
     ],
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
@@ -82,14 +84,15 @@
     "title": "MAKIMONO",
     "url": "https://makimono.lumilumi.app/",
     "npub": "",
-    "description": "Nostr Long-Form Content Editor NIP-23 マークダウン記事が書ける",
+    "description": "マークダウン記事簡単に編集できる。Nostr Long-Form Content(NIP-23) のEditor",
     "source": "https://github.com/TsukemonoGit/longFormEditor",
     "date": "May.2025",
     "keywords": [
       "Nostr",
       "Skeleton",
       "Svelte5",
-      "bytemd"
+      "bytemd",
+      "@konemono/svelte5-i18n"
     ],
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
@@ -140,7 +143,7 @@
     "title": "Luminostr",
     "url": "https://tsukemonogit.github.io/luminostr/",
     "npub": "",
-    "description": "特定のkindの置換可能（replaceable）イベントをいろんなリレーから探しだして、特定の時点でのイベントで上書きする（現在時刻で再書込みする）また、手持ちのローカルJSONファイルで上書きする バックアップツール",
+    "description": "フォローリストが飛んだ時、リレーリストが上書きされたとき、プロフィールが消えたとき、などなどにお役立ち\n特定のkindの置換可能（replaceable,addressable）イベントをいろんなリレーから探しだして、特定の時点でのイベントで上書きする（現在時刻で再書込みする）また、手持ちのローカルJSONファイルで上書きする バックアップツール",
     "source": "https://tsukemonogit.github.io/luminostr/",
     "date": "May.2024",
     "keywords": [
@@ -202,7 +205,7 @@
     "title": "random mdn docs bot",
     "url": "",
     "npub": "npub1fuffhzfv7xdrm5htde4mp9e5n6ywn763cq6mzxtetyqvsg66kkasp9zzyz",
-    "description": "https://developer.mozilla.org/ja/docs/Web のサイトからランダムのページを一定時間間隔でNostrにポスト",
+    "description": "MDN のサイトからランダムのページを一定時間間隔でNostrにポスト",
     "source": "https://github.com/TsukemonoGit/mdn_test",
     "date": "Apr.2024",
     "keywords": [
@@ -221,7 +224,7 @@
     "title": "React Reference Bot",
     "url": "",
     "npub": "npub1cktfz62n0gf098mq7c4np4g35s6ex42p30ae5ar8d2w32zd24kdqa3j6m7",
-    "description": "reactのreference ( https://ja.react.dev/reference/react ) からランダムでポストするかもしれないbot",
+    "description": "reactのreferenceからランダムでポストするbot",
     "source": "",
     "date": "Apr.2024",
     "keywords": [
@@ -281,7 +284,7 @@
     "title": "fofo",
     "url": "",
     "npub": "npub1m054537ssdkqx84va8cv9tankxeestqxk8v95gdvxpwj7n69fslqx4wn3w",
-    "description": "アルフォートを食べすぎてしまうのを防止するために、食べた個数を10分毎にチェックしてNostrに投稿するBot\\nロードセル（5 kg）+ HX711 \\nカゴは余ってたエコクラフトで手作り\\nボタンとLEDと7セグメントLEDもつけてみた,",
+    "description": "アルフォートを食べすぎてしまうのを防止するために、食べた個数を10分毎にチェックしてNostrに投稿するBot\nロードセル（5 kg）+ HX711 \\nカゴは余ってたエコクラフトで手作り。ボタンとLEDと7セグメントLEDもつけてみた",
     "source": "https://github.com/TsukemonoGit/fofo-weight",
     "date": "Apr.2024",
     "keywords": [
@@ -301,7 +304,7 @@
     "title": "NostViewstr(のすとびうあ)",
     "url": "https://nostviewstr.vercel.app/",
     "npub": "",
-    "description": "Nostr上の様々なデータを閲覧、編集できるアプリ\\nモバイル通信環境のために、画像非表示などの通信量を節約できる設定がある",
+    "description": "Nostr上の様々なデータを閲覧、編集できるアプリ\nモバイル通信環境のために、画像非表示などの通信量を節約できる設定がある",
     "source": "https://github.com/TsukemonoGit/NostViewstr",
     "date": "Nov.2023",
     "keywords": [
@@ -363,7 +366,7 @@
     "title": "nostr-monoGazo-bot",
     "url": "https://tsukemonogit.github.io/nostr-monoGazo-bot/",
     "npub": "npub1lxrlhyrfdl9sjdvx9xhwhag4d6s95sz3q8z09kgzp0cz73l2ffys9p726u",
-    "description": "Nostrに投稿された もの ₍ ･ᴗ･ ₎ のイラストとか、₍ ･ᴗ･ ₎ っぽい写真つきの投稿を収集して、特定のワードに反応して画像を投稿したりするBot\\nついでにサイトも作成\\nNostrをやっていない人にも雰囲気を伝えるために、実際のNostrのポストも表示している。特定のブックマークに追加された画像を検知してもの画像に追加する機能も追加。",
+    "description": "Nostrに投稿された もの ₍ ･ᴗ･ ₎ のイラストとか、₍ ･ᴗ･ ₎ っぽい写真つきの投稿を収集して、特定のワードに反応して画像を投稿したりするBot\nついでにサイトも作成\nNostrをやっていない人にも雰囲気を伝えるために、実際のNostrのポストも表示している\n特定のブックマークに追加された画像を検知してもの画像に追加する機能も追加。",
     "source": "https://github.com/TsukemonoGit/nostr-monoGazo-bot",
     "date": "Sep.2023",
     "keywords": [
@@ -373,7 +376,8 @@
       "JavaScript",
       "TypeScript",
       "Node.js",
-      "Google Sheets API"
+      "Google Sheets API",
+      "@konemono/nostr-web-components"
     ],
     "majorCategory": "Bot",
     "minorCategory": "自動投稿Bot",
@@ -384,9 +388,9 @@
   {
     "id": "project-19",
     "title": "うちの温度と湿度と気圧Bot",
-    "url": "https://tsukemonogit.github.io/M5MyRoomNostr/",
+    "url": "https://zenn.dev/konemono/articles/4fafb0d14ffcbd",
     "npub": "npub1sm73eqxq0h4mc0ge9ymhkfx5haj6skhjdzh3tndz4n8y2n0kwzlq57nl7v",
-    "description": "M5Stack Core2 と 温湿度気圧センサーユニット を使って、部屋の温湿度気圧情報をNostrに一時間おきに投稿するBot\\n公開されるため、温度の上げ過ぎ下げすぎに気をつけることができる。\nhttps://zenn.dev/konemono/articles/4fafb0d14ffcbd 記事も書いた",
+    "description": "M5Stack Core2 と 温湿度気圧センサーユニット を使って、部屋の温湿度気圧情報をNostrに一時間おきに投稿するBot\n公開されるため、温度の上げ過ぎ下げすぎに気をつけることができる。",
     "source": "https://github.com/TsukemonoGit/M5MyRoomNostr",
     "date": "May.2023",
     "keywords": [
@@ -406,7 +410,7 @@
     "title": "ぶろっくをわくにはめるやつ",
     "url": "https://unityroom.com/games/pu",
     "npub": "",
-    "description": "ブロックを枠にはめるゲーム\\nこういうゲームの配信をしているところを見て作ってみた\\nブロックの立体感を出すためにblenderで素材を作成\\n出口（ドア）は手書き",
+    "description": "ブロックを枠にはめるゲーム\nこういうゲームの配信をしているところを見て作ってみた\nブロックの立体感を出すためにblenderで素材を作成\n出口（ドア）は手書き",
     "source": "",
     "date": "Jan.2023",
     "keywords": [
@@ -418,14 +422,14 @@
     "minorCategory": "Webゲーム",
     "year": 2023,
     "month": 1,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/38484/icon_20221231_194559.png"
   },
   {
     "id": "project-21",
     "title": "ぱたぱた",
     "url": "https://unityroom.com/games/ptpt",
     "npub": "",
-    "description": "ライツアウトのようなゲーム\\nパズロムという雑誌に収録されていた ぱたぱた というゲームをUnityで再現し、アレンジを加えたもの\\nブロックの立体感を出すためにblenderで素材を作成",
+    "description": "ライツアウトのようなゲーム\nパズロムという雑誌に収録されていた「ぱたぱた」というゲームをUnityで再現し、アレンジを加えたもの\nブロックの立体感を出すためにblenderで素材を作成",
     "source": "https://github.com/TsukemonoGit/patapata",
     "date": "Jun.2022",
     "keywords": [
@@ -437,14 +441,14 @@
     "minorCategory": "Webゲーム",
     "year": 2022,
     "month": 6,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/32194/icon_20220606_164822.png"
   },
   {
     "id": "project-22",
     "title": "りばーし",
     "url": "https://unityroom.com/games/onlineothelloo",
     "npub": "",
-    "description": "オンライン対戦できるリバーシ\\n制限時間を設定することができ、制限時間を過ぎると適当な場所に勝手に置かれるようになっている",
+    "description": "オンライン対戦できるリバーシ\n制限時間を設定することができ、制限時間を過ぎると適当な場所に勝手に置かれるようになっている",
     "source": "https://github.com/TsukemonoGit/OthelloOnline",
     "date": "Sep.2022",
     "keywords": [
@@ -456,14 +460,14 @@
     "minorCategory": "Webゲーム",
     "year": 2022,
     "month": 9,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/31756/icon_20220512_142008.png"
   },
   {
     "id": "project-23",
     "title": "buatuihodogood",
     "url": "https://unityroom.com/games/buatuihodogood",
     "npub": "",
-    "description": "とある分厚い机で配信をしている方をリスペクトしたクリックゲーム\\n一部キャラクター、素材はblenderで自作",
+    "description": "とある分厚い机で配信をしている方をリスペクトしたクリックゲーム\n一部キャラクター、素材はblenderで自作",
     "source": "",
     "date": "Jul.2022",
     "keywords": [
@@ -475,14 +479,14 @@
     "minorCategory": "Webゲーム",
     "year": 2022,
     "month": 7,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/30651/icon_20220407_110614.png"
   },
   {
     "id": "project-24",
     "title": "かしふぁん２",
     "url": "https://unityroom.com/games/kashifan2",
     "npub": "",
-    "description": "とある分厚い机で配信をしている方をリスペクトした横スクロールゲーム\\n途中まで\\nキャラクター、素材はblenderで自作",
+    "description": "とある分厚い机で配信をしている方をリスペクトした横スクロールゲーム\n途中まで\nキャラクター、素材はblenderで自作",
     "source": "",
     "date": "Mar.2022",
     "keywords": [
@@ -494,14 +498,14 @@
     "minorCategory": "Webゲーム",
     "year": 2022,
     "month": 3,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/30360/icon_20220331_172959.png"
   },
   {
     "id": "project-25",
     "title": "カシファン",
     "url": "https://unityroom.com/games/fancolle",
     "npub": "",
-    "description": "とある分厚い机で配信をしている方をリスペクトした3Dゲーム\\nキャラクター、素材はblenderで自作\\nデータをぶっ飛ばしながら作成し、gitに手を出しはじめた頃",
+    "description": "とある分厚い机で配信をしている方をリスペクトした3Dゲーム\nキャラクター、素材はblenderで自作\nデータをぶっ飛ばしながら作成し、gitに手を出しはじめた頃",
     "source": "https://github.com/TsukemonoGit/wakeUpVer2",
     "date": "Jul.2022",
     "keywords": [
@@ -513,7 +517,7 @@
     "minorCategory": "Webゲーム",
     "year": 2022,
     "month": 7,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/30159/icon_20220324_103328.png"
   },
   {
     "id": "project-26",
@@ -531,7 +535,7 @@
     "minorCategory": "未分類",
     "year": 2022,
     "month": 8,
-    "picture": ""
+    "picture": "https://tsukemonogit.github.io/Freest2022/images/cursor_view/fanz_wait3.gif"
   },
   {
     "id": "project-27",
@@ -549,14 +553,14 @@
     "minorCategory": "Webゲーム",
     "year": 2022,
     "month": 1,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/30157/icon_20220320_212709.png"
   },
   {
     "id": "project-28",
     "title": "tohu",
     "url": "https://unityroom.com/games/tohu",
     "npub": "",
-    "description": "パズロムという雑誌に収録されていた スクールユミちゃん というゲームをUnityで再現したもの\\n元はパソコンゲームだが、スマホでもプレイできるようにボタンを設置\\n素材はほぼほぼExcelで作成",
+    "description": "パズロムという雑誌に収録されていた スクールユミちゃん というゲームをUnityで再現したもの\n元はパソコンゲームだが、スマホでもプレイできるようにボタンを設置\n素材はほぼほぼExcelで作成",
     "source": "https://github.com/TsukemonoGit/scym",
     "date": "Dec.2021",
     "keywords": [
@@ -567,7 +571,7 @@
     "minorCategory": "Webゲーム",
     "year": 2021,
     "month": 12,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/51230/icon_20230730_144513.png"
   },
   {
     "id": "project-29",
@@ -585,14 +589,14 @@
     "minorCategory": "Webゲーム",
     "year": 2021,
     "month": 12,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/30237/icon_20220320_211334.png"
   },
   {
     "id": "project-30",
     "title": "てとりす",
     "url": "https://unityroom.com/games/teto",
     "npub": "",
-    "description": "初めてUnityで作ったゲーム\\nテトラ以外のミノも設定できる\\nホールドもできる",
+    "description": "初めてUnityで作ったゲーム\nテトラ以外のミノも設定できる\nホールドもできる",
     "source": "",
     "date": "Oct.2021",
     "keywords": [
@@ -603,7 +607,7 @@
     "minorCategory": "Webゲーム",
     "year": 2021,
     "month": 10,
-    "picture": ""
+    "picture": "https://object-storage.tyo1.conoha.io/v1/nc_df3bdbc45bc04950b558834f5728517a/unityroom_production/icon/30756/icon_20220412_015457.png"
   },
   {
     "id": "project-31",
@@ -628,7 +632,7 @@
     "title": "最自由研究2022",
     "url": "https://tsukemonogit.github.io/Freest2022/",
     "npub": "",
-    "description": "ゲームとカーソル倒錯性で提出 アーカイブはこちらのどこか→（https://youtube.com/playlist?list=PLYzId9nzefaYBC1PHHOPGfuH84qd44bjb） https://kashiwooo.wixsite.com/reserch",
+    "description": "ゲームとカーソルなど作成したことを提出",
     "source": "https://github.com/TsukemonoGit/Freest2022",
     "date": "Aug.2022",
     "keywords": [
@@ -681,7 +685,7 @@
     "title": "Hello Nostr, Yo Bluesky 3\n未来を担う分散型SNS",
     "url": "https://books.428lab.net/book/004/",
     "npub": "",
-    "description": "技術書典17 もののツールたち",
+    "description": "技術書典17 もののツールたち\nNostrで作ったいろいろなツールについての記事を書きました。",
     "source": "",
     "date": "Nov.2024",
     "keywords": [
@@ -691,14 +695,14 @@
     "minorCategory": "記事",
     "year": 2024,
     "month": 11,
-    "picture": ""
+    "picture": "https://books.428lab.net/images/book/004/cover.webp"
   },
   {
     "id": "project-36",
     "title": "Enjoy 分散型SNS\nメタクソ化の特効薬は分散型だけ！",
     "url": "https://books.428lab.net/book/005/",
     "npub": "",
-    "description": "技術書典18\nNostrで助成金もらった話 申請編\nNostrで助成金もらった話 税務署編",
+    "description": "技術書典18\nNostrで助成金もらった話 申請編\nNostrで助成金もらった話 税務署編\nNostrアドベントカレンダーで書いていた記事を書典用に加筆修正しました。",
     "source": "",
     "date": "May.2025",
     "keywords": [
@@ -708,7 +712,7 @@
     "minorCategory": "記事",
     "year": 2025,
     "month": 5,
-    "picture": ""
+    "picture": "https://books.428lab.net/images/book/005/cover.webp"
   },
   {
     "id": "project-37",

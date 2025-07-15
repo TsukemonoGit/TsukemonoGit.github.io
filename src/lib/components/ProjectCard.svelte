@@ -118,6 +118,9 @@
 		color: #6b7280;
 		font-size: 0.875rem;
 		line-height: 1.4;
+		white-space: pre-wrap;
+		word-break: normal;
+		word-break: break-word;
 	}
 
 	.project-footer {
