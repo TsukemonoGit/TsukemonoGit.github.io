@@ -171,6 +171,29 @@
 	$effect(() => {
 		selectedMinorCategory = 'all';
 	});
+
+	let showScrollTopButton = $state(false);
+
+	onMount(() => {
+		const handleScroll = () => {
+			showScrollTopButton = window.scrollY > 200; // 200px以上スクロールしたら表示
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		handleScroll(); // 初回実行
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
+
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+		// URLのハッシュを除去
+		if (location.hash) {
+			history.replaceState(null, '', location.pathname + location.search);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -183,7 +206,9 @@
 </svelte:head>
 
 <h1>もの₍ ･ᴗ･ ₎の活動記録</h1>
-
+{#if showScrollTopButton}
+	<button class="scroll-top-button" onclick={scrollToTop}> ↑ トップへ戻る </button>
+{/if}
 {#if loading}
 	<div class="loading">
 		<div class="loading-spinner"></div>
@@ -251,9 +276,11 @@
 			{@const majorData = filteredHierarchy?.[majorCategory]}
 			{#if majorData && majorData.projects.length > 0}
 				{#if majorData.major === 'アカウント'}
-					<AccountSection accounts={majorData.projects} />
+					<section id={majorData.major}>
+						<AccountSection accounts={majorData.projects} />
+					</section>
 				{:else}
-					<div class="major-category-section">
+					<section id={majorData.major} class="major-category-section">
 						<button
 							class="major-category-header"
 							onclick={() => toggleMajorCategory(majorCategory)}
@@ -292,7 +319,7 @@
 								{/each}
 							</div>
 						{/if}
-					</div>
+					</section>
 				{/if}{/if}
 		{/each}
 	</div>
@@ -513,5 +540,26 @@
 		.projects-grid {
 			grid-template-columns: 1fr;
 		}
+	}
+	.scroll-top-button {
+		opacity: 0.8;
+		position: fixed;
+		bottom: 24px;
+		right: 24px;
+		background-color: #333;
+		color: white;
+		padding: 0.75em 1em;
+		border: none;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+		cursor: pointer;
+		z-index: 1000;
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease;
+	}
+	.scroll-top-button:hover {
+		opacity: 0.9;
+		transform: translateY(-2px);
 	}
 </style>
