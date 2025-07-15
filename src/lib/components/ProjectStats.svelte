@@ -9,11 +9,11 @@
 	</div>
 	<div class="category-counts">
 		{#each orderedMajorCategories as category}
-			<div class="category-stat">
+			<a class="category-stat" href={`#${category}`}>
 				<span class="stat-icon">{majorCategoryConfigs[category].icon}</span>
 				<span class="stat-count">{stats.majorStats[category]}</span>
 				<span class="stat-label">{majorCategoryConfigs[category].name}</span>
-			</div>
+			</a>
 		{/each}
 	</div>
 </div>
@@ -64,24 +64,51 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 0.75rem;
-		background-color: white;
-		border-radius: 6px;
-		min-width: 85px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+		padding: 0.875rem;
+		background-color: #fff;
+		border-radius: 10px;
+		min-width: 95px;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.category-stat:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 	}
 
 	.stat-icon {
-		font-size: 1.5rem;
-		margin-bottom: 0.375rem;
-		opacity: 0.8;
+		font-size: 1.75rem;
+		margin-bottom: 0.5rem;
+		opacity: 0.85;
+		color: #4f46e5; /* より目立つブルーに */
 	}
 
 	.stat-count {
-		font-size: 1.375rem;
+		font-size: 1.5rem;
 		font-weight: 600;
 		color: #1f2937;
-		line-height: 1;
+		line-height: 1.1;
+	}
+
+	.category-stat .stat-label {
+		font-size: 0.8125rem;
+		text-align: center;
+		margin-top: 0.25rem;
+		line-height: 1.2;
+		color: #6b7280;
+	}
+
+	.category-counts {
+		display: flex;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		flex: 1;
+		justify-content: flex-start;
 	}
 
 	.category-stat .stat-label {
