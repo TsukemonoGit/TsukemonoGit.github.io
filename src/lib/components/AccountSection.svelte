@@ -9,12 +9,12 @@
 
 	// アカウント情報のアイコンマッピング
 	const accountIcons: Record<string, string> = {
-		'Github': '🐱',
-		'Nostr': '🟣',
-		'Zenn': '📝',
-		'Unityroom': '🎮',
-		'Bluesky': '🦋',
-		'npm': '📦'
+		Github: '🐱',
+		Nostr: '🟣',
+		Zenn: '📝',
+		Unityroom: '🎮',
+		Bluesky: '🦋',
+		npm: '📦'
 	};
 
 	// アカウント情報から適切なアイコンを取得
@@ -22,14 +22,14 @@
 		// タイトルや説明からアカウントタイプを判定
 		const title = account.title.toLowerCase();
 		const desc = account.description.toLowerCase();
-		
+
 		if (title.includes('github') || desc.includes('github')) return accountIcons['Github'];
 		if (title.includes('nostr') || desc.includes('nostr')) return accountIcons['Nostr'];
 		if (title.includes('zenn') || desc.includes('zenn')) return accountIcons['Zenn'];
 		if (title.includes('unityroom') || desc.includes('unityroom')) return accountIcons['Unityroom'];
 		if (title.includes('bluesky') || desc.includes('bluesky')) return accountIcons['Bluesky'];
 		if (title.includes('npm') || desc.includes('npm')) return accountIcons['npm'];
-		
+
 		return '🔗'; // デフォルトアイコン
 	}
 
@@ -74,6 +74,9 @@
 					<a href={account.url} target="_blank" rel="noopener noreferrer" class="account-link">
 						<span class="link-icon">🔗</span>
 					</a>
+				{/if}
+				{#if account.npub}
+					<nostr-profile user={account.npub} display="name"></nostr-profile>
 				{/if}
 			</div>
 		{/each}
@@ -187,11 +190,11 @@
 		.accounts-grid {
 			grid-template-columns: 1fr;
 		}
-		
+
 		.account-card {
 			gap: 0.75rem;
 		}
-		
+
 		.account-icon {
 			font-size: 1.5rem;
 		}
