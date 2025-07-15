@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import '../app.css';
+	//import '@konemono/nostr-web-components';
+	import { browser } from '$app/environment';
 
 	onMount(() => {
-		// Nostr Web Componentsを初期化
-		if (typeof window !== 'undefined') {
-			import('@konemono/nostr-web-components');
+		if (browser) {
+			// より安全な方法でスクリプトを動的読み込み
+			const script = document.createElement('script');
+			script.type = 'module';
+			script.src = 'https://unpkg.com/@konemono/nostr-web-components';
+			document.head.appendChild(script);
 		}
 	});
 </script>

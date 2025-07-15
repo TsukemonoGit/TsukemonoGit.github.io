@@ -179,12 +179,18 @@ async function loadExcelData(xlsxPath) {
 
 async function main() {
   const xlsxPath = path.resolve('static/data.xlsx');
-  const jsonPath = path.resolve('static/data.json');
+
+  // ✅ 出力先を Vite で import 可能な場所へ変更
+  const outputDir = path.resolve('src/lib/generated');
+  const jsonPath = path.join(outputDir, 'data.json');
+
+  // ✅ ディレクトリがなければ作成
+  await fs.mkdir(outputDir, { recursive: true });
 
   const rawData = await loadExcelData(xlsxPath);
-  const processed = processProjectData(rawData); // 既存の関数を再利用
-  await fs.writeFile(jsonPath, JSON.stringify(processed, null, 2), 'utf-8');
+  const processed = processProjectData(rawData);
 
+  await fs.writeFile(jsonPath, JSON.stringify(processed, null, 2), 'utf-8');
   console.log(`✅ XLSX -> JSON 変換完了: ${jsonPath}`);
 }
 

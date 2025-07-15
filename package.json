@@ -3,14 +3,16 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"build": "npm run preprocess && vite build",
+		
 		"preprocess": "node scripts/preprocess-data.js",
+	
 		"dev": "npm run preprocess && vite dev",
+		"build": "npm run preprocess &&  vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint ."
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.1",
@@ -27,6 +29,7 @@
 	"type": "module",
 	"dependencies": {
 		"@konemono/nostr-web-components": "^0.1.0",
+		"@sveltejs/adapter-static": "^3.0.8",
 		"exceljs": "^4.4.0",
 		"papaparse": "^5.5.3"
 	}
