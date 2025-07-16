@@ -71,10 +71,10 @@ export const majorCategoryConfigs: Record<
 	typeof majorCategories[number],
 	{ name: string; icon: string; color: string }
 > = {
-	'ライブラリ・コンポーネント': { name: 'ライブラリ・コンポーネント', icon: '📚', color: '#3b82f6' },
+	'ライブラリ・コンポーネント': { name: 'ライブラリ系', icon: '📚', color: '#3b82f6' },
 	'アプリケーション': { name: 'アプリケーション', icon: '💻', color: '#10b981' },
 	'ゲーム': { name: 'ゲーム', icon: '🎮', color: '#f97316' },
-	'記事・出版物': { name: '記事・出版物', icon: '📰', color: '#facc15' },
+	'記事・出版物': { name: '記事', icon: '📰', color: '#facc15' },
 	'Bot': { name: 'Bot', icon: '🤖', color: '#8b5cf6' },
 	'その他': { name: 'その他', icon: '📂', color: '#6b7280' },
 	'アカウント': { name: 'アカウント', icon: '👤', color: '#ef4444' }

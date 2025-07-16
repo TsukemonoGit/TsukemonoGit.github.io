@@ -65,7 +65,7 @@
 <div class="nostr-posts-section">
 	<h3 class="section-title">
 		<span class="icon">🟣</span>
-		最新のものとBotたちの投稿
+		最新のものとBotたちのNostr投稿
 	</h3>
 
 	{#if loading}
