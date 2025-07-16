@@ -18,6 +18,7 @@
 	import AccountSection from '$lib/components/AccountSection.svelte';
 	import data from '$lib/generated/data.json';
 	import ProjectStats from '$lib/components/ProjectStats.svelte';
+	import NostrPostsSection from '$lib/components/NostrPostsSection.svelte';
 
 	let projects: ProcessedProject[] = [...data] as ProcessedProject[];
 	let categoryHierarchy: CategoryHierarchy | null = $state(null);
@@ -330,6 +331,9 @@
 		</div>
 	{/if}
 {/if}
+<div class="account-sidebar">
+	<NostrPostsSection />
+</div>
 
 <style>
 	.loading {
