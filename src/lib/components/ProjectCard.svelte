@@ -6,6 +6,11 @@
 	}
 
 	let { project }: Props = $props();
+
+	function getUserAndRepo(url: string): string {
+		const match = url.match(/^https:\/\/github\.com\/([^\/]+\/[^\/]+)/);
+		return match ? match[1] : '';
+	}
 </script>
 
 <div class="card">
@@ -52,19 +57,11 @@
 			{/if}
 
 			{#if project.source}
-				<a class="source-button" href={project.source} target="_blank" rel="noopener noreferrer">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-						fill="currentColor"
-						viewBox="0 0 16 16"
-					>
-						<path
-							d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.001 8.001 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-						/>
-					</svg>
-					ソースコードを見る
+				<a href={project.source} target="_blank" rel="noopener noreferrer" class="source-button">
+					<img
+						src={`https://img.shields.io/github/stars/${getUserAndRepo(project.source)}?style=for-the-badge&logo=github&label=GitHub`}
+						alt="GitHub stars"
+					/>
 				</a>
 			{/if}
 		</div>
@@ -222,20 +219,13 @@
 		font-weight: 500;
 		border: 1px solid #e2e8f0;
 	}
-
 	.source-button {
-		display: flex;
+		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
-		background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-		color: #fff;
-		padding: 0.5rem 1rem;
-		border-radius: 0.5rem;
-		font-size: 0.75rem;
-		font-weight: 500;
 		text-decoration: none;
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		border-radius: 0.5rem;
+		padding: 0.25rem;
 	}
 
 	.source-button:focus {
@@ -246,17 +236,17 @@
 	.source-button:hover,
 	.source-button:focus {
 		transform: translateY(-1px);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-		background: linear-gradient(135deg, #334155 0%, #475569 100%);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	}
 
-	.source-button svg {
-		transition: transform 0.3s ease;
+	.source-button img {
+		height: 28px;
+		border-radius: 6px;
+		transition: opacity 0.3s ease;
 	}
 
-	.source-button:hover svg,
-	.source-button:focus svg {
-		transform: scale(1.1);
+	.source-button:hover img {
+		opacity: 0.8;
 	}
 
 	/* fallback if no image */
