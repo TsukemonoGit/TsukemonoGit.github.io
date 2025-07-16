@@ -28,6 +28,8 @@
 
 	<main class="app-main">
 		<div class="container">
+			<nostr-container relays={`["wss://nos.lol","wss://yabu.me","wss://relay.nostr.band"]`}
+			></nostr-container>
 			<slot />
 		</div>
 	</main>
