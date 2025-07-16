@@ -26,7 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@konemono/nostr-web-components": "^0.1.3",
+		"@konemono/nostr-web-components": "^0.1.4",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"exceljs": "^4.4.0",
 		"papaparse": "^5.5.3"
