@@ -4,7 +4,7 @@
 	//import '@konemono/nostr-web-components';
 	import { browser } from '$app/environment';
 
-	onMount(() => {
+	/* 	onMount(() => {
 		if (browser) {
 			// より安全な方法でスクリプトを動的読み込み
 			const script = document.createElement('script');
@@ -12,7 +12,7 @@
 			script.src = 'https://unpkg.com/@konemono/nostr-web-components';
 			document.head.appendChild(script);
 		}
-	});
+	}); */
 </script>
 
 <div class="app">
