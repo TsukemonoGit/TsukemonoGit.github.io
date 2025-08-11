@@ -79,13 +79,60 @@
 		</div>
 	{:else}
 		<div class="posts-container">
-			<!-- nostr-listカスタム要素を使用 -->
-			<nostr-list
+			<!-- nostr-stream カスタム要素を使用 -->
+			<nostr-stream
+				theme="light"
 				href={`https://lumilumi.app/{id}`}
-				filters={`[{"kinds":[1,6],"limit":10,"authors":["84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5","5650178597525e90ea16a4d7a9e33700ac238a1be9dbf3f5093862929d9a1e60","87e02cd9151cbf69ba20268a2a4237ad2f39fc631c96558e294ca00586477412","f987fb90696fcb09358629aeebf5156ea05a405101c4f2d9020bf02f47ea4a49","86fd1c80c07debbc3d1929377b24d4bf65a85af268af15cda2acce454df670be","7202985c7e34a7c1c48b93d882a953c5258cf226204ec95bececd8360c792969","dbe95a47d0836c031eace9f0c2afb3b1b3982c06b1d85a21ac305d2f4f454c3e","4f129b892cf19a3dd2eb6e6bb097349e88e9fb51c035b119795900c8235ab5bb","c5969169537a12f29f60f62b30d511a4359355418bfb9a74676a9d1509aaad9a","54fd3172bbc4110646ddb0410dc5451bf141a47e00cbfa2e7e238d9e8f3392de","f40901c9f844c9e92c3f951ed58b729a2a5819cf82f590403d186587a12b7fa0"]}]`}
+				filters={`[{"kinds":[1,6,7],"limit":10,"authors":["84b0c46ab699ac35eb2ca286470b85e081db2087cdef63932236c397417782f5","5650178597525e90ea16a4d7a9e33700ac238a1be9dbf3f5093862929d9a1e60","87e02cd9151cbf69ba20268a2a4237ad2f39fc631c96558e294ca00586477412","f987fb90696fcb09358629aeebf5156ea05a405101c4f2d9020bf02f47ea4a49","86fd1c80c07debbc3d1929377b24d4bf65a85af268af15cda2acce454df670be","7202985c7e34a7c1c48b93d882a953c5258cf226204ec95bececd8360c792969","dbe95a47d0836c031eace9f0c2afb3b1b3982c06b1d85a21ac305d2f4f454c3e","4f129b892cf19a3dd2eb6e6bb097349e88e9fb51c035b119795900c8235ab5bb","c5969169537a12f29f60f62b30d511a4359355418bfb9a74676a9d1509aaad9a","54fd3172bbc4110646ddb0410dc5451bf141a47e00cbfa2e7e238d9e8f3392de","f40901c9f844c9e92c3f951ed58b729a2a5819cf82f590403d186587a12b7fa0"]}]`}
 				limit="10"
 				class="nostr-widget"
-			></nostr-list>
+			></nostr-stream>
+
+			<!-- フォールバック用の手動レンダリング -->
+			<div class="fallback-posts">
+				{#each posts as post}
+					<div class="post-item">
+						<div class="post-content">
+							{truncateContent(post.content)}
+						</div>
+						<div class="post-meta">
+							<span class="post-time">
+								{formatDate(post.created_at)}
+							</span>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
+</div>
+<div class="nostr-posts-section">
+	<h3 class="section-title">
+		<span class="icon">🟣</span>
+		もののブックマークリスト
+	</h3>
+
+	{#if loading}
+		<div class="loading">
+			<div class="loading-spinner"></div>
+			<p>投稿を読み込んでいます...</p>
+		</div>
+	{:else if error}
+		<div class="error">
+			<p>{error}</p>
+		</div>
+	{:else}
+		<div class="posts-container">
+			<!-- nostr-listカスタム要素を使用 -->
+			<nostr-naddr
+				kind="10003"
+				user="mono@tsukemonogit.github.io"
+				display="card"
+				sortOrder="reverse"
+				theme="light"
+				itemsPerPage="3"
+				class="nostr-widget"
+			></nostr-naddr>
 
 			<!-- フォールバック用の手動レンダリング -->
 			<div class="fallback-posts">
