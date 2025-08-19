@@ -342,12 +342,12 @@
   },
   {
     "id": "project-17",
-    "title": "ぶくまびうあ",
-    "url": "https://nostr-bookmark-viewer3.vercel.app/",
+    "title": "Shosai",
+    "url": "https://shosai.lumilumi.app/",
     "npub": "",
     "description": "のすとびうあでもブックマークの閲覧編集はできるが、Bookmarkはkindが複数存在するため、ブックマーク関連のkindを集めてぶくまびうあとした。",
     "source": "https://github.com/TsukemonoGit/nostr-bookmark-viewer3",
-    "date": "Sep.2023",
+    "date": "Aug.2025",
     "keywords": [
       "Nostr",
       "Svelte",
@@ -357,8 +357,8 @@
     ],
     "majorCategory": "アプリケーション",
     "minorCategory": "Webアプリ",
-    "year": 2023,
-    "month": 9,
+    "year": 2025,
+    "month": 8,
     "picture": ""
   },
   {
@@ -685,7 +685,7 @@
     "title": "Hello Nostr, Yo Bluesky 3\n未来を担う分散型SNS",
     "url": "https://books.428lab.net/book/004/",
     "npub": "",
-    "description": "技術書典17 もののツールたち\nNostrで作ったいろいろなツールについての記事を書きました。",
+    "description": "技術書典17 もののツールたち\nNostrで作ったいろいろなツールについての記事を書きました。\n[国立図書館にもあります](https://ndlsearch.ndl.go.jp/books/R100000002-I033846902)。",
     "source": "",
     "date": "Nov.2024",
     "keywords": [
@@ -702,7 +702,7 @@
     "title": "Enjoy 分散型SNS\nメタクソ化の特効薬は分散型だけ！",
     "url": "https://books.428lab.net/book/005/",
     "npub": "",
-    "description": "技術書典18\nNostrで助成金もらった話 申請編\nNostrで助成金もらった話 税務署編\nNostrアドベントカレンダーで書いていた記事を書典用に加筆修正しました。",
+    "description": "技術書典18\nNostrアドベントカレンダーで書いていた以下の記事を書典用に加筆修正しました。\n [OpenSats 申請編](https://zenn.dev/konemono/articles/cb39fb7f302551), [OpenSats 税務署編](https://zenn.dev/konemono/articles/b4087655d8da8b)",
     "source": "",
     "date": "May.2025",
     "keywords": [

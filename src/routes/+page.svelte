@@ -1,6 +1,6 @@
 <!--+page.svelte-->
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount, tick, untrack } from 'svelte';
 	import { groupByCategoryHierarchy } from '$lib/dataParser';
 	import type {
 		ProcessedProject,
@@ -132,24 +132,33 @@
 		return majorData ? majorData.minors : [];
 	});
 
-	onMount(async () => {
-		try {
-			loading = true;
-			error = '';
+	onMount(() => {
+		loading = true;
+		error = '';
 
-			/* const response = await fetch('/data.json');
-			const raw = await response.json();
+		categoryHierarchy = groupByCategoryHierarchy(projects);
 
-			projects = raw; */
-			categoryHierarchy = groupByCategoryHierarchy(projects);
-			expandedCategories = new Set(['アプリケーション', 'ライブラリ・コンポーネント']);
-		} catch (e) {
-			error = e instanceof Error ? e.message : 'データの読み込みに失敗しました';
-			console.error('Error loading data:', e);
-		} finally {
-			loading = false;
-		}
+		// 初回ロード
+		expandByHash();
+
+		const handleHashChange = () => expandByHash();
+		window.addEventListener('hashchange', handleHashChange);
+
+		loading = false;
 	});
+
+	const expandByHash = async () => {
+		const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+		if (hash && orderedMajorCategories.includes(hash as MajorCategory)) {
+			console.log(hash);
+			expandedCategories = new Set([...expandedCategories, hash as MajorCategory]);
+			await tick(); // DOM更新を待機
+			const el = document.getElementById(hash);
+			if (el) el.scrollIntoView({ behavior: 'smooth' });
+		} else {
+			expandedCategories = new Set(['アプリケーション', 'ライブラリ・コンポーネント']);
+		}
+	};
 
 	function toggleMajorCategory(category: MajorCategory) {
 		if (expandedCategories.has(category)) {

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ProcessedProject } from '$lib/types';
+	import { marked } from 'marked';
 
 	interface Props {
 		project: ProcessedProject;
@@ -11,6 +12,7 @@
 		const match = url.match(/^https:\/\/github\.com\/([^\/]+\/[^\/]+)/);
 		return match ? match[1] : '';
 	}
+	marked.use({ gfm: true, breaks: true });
 </script>
 
 <div class="card">
@@ -34,13 +36,17 @@
 				</h2>
 
 				{#if project.npub}
-					<nostr-profile display="compact" user={project.npub} href={`https://lumilumi.app/{id}`}
+					<nostr-profile
+						display="compact"
+						user={project.npub}
+						theme="light"
+						href={`https://lumilumi.app/{id}`}
 					></nostr-profile>
 				{/if}
 
-				{#if project.description}
-					<p class="card-description">{project.description}</p>
-				{/if}
+				{#if project.description}<div class="card-description">
+						{@html marked.parse(project.description)}
+					</div>{/if}
 			</div>
 		</div>
 		{#if project.keywords.length > 0}
