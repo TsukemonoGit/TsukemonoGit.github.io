@@ -1,6 +1,6 @@
 <!--+page.svelte-->
 <script lang="ts">
-	import { onDestroy, onMount, tick, untrack } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { groupByCategoryHierarchy } from '$lib/dataParser';
 	import type {
 		ProcessedProject,
@@ -527,7 +527,7 @@
 
 	.projects-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
 		gap: 1rem;
 	}
 

@@ -127,7 +127,12 @@
 		border: 1px solid #e2e8f0;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 	}
-
+	@media (max-width: 640px) {
+		.card-image {
+			width: 64px;
+			height: 64px;
+		}
+	}
 	.card-image img {
 		width: 100%;
 		height: 100%;
@@ -197,6 +202,7 @@
 		font-size: 0.95rem;
 		line-height: 1.6;
 		white-space: pre-wrap;
+		overflow-wrap: anywhere;
 	}
 
 	.tag {

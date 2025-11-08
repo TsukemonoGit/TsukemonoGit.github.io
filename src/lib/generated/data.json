@@ -346,7 +346,7 @@
     "url": "https://shosai.lumilumi.app/",
     "npub": "",
     "description": "のすとびうあでもブックマークの閲覧編集はできるが、Bookmarkはkindが複数存在するため、ブックマーク関連のkindを集めてぶくまびうあとした。",
-    "source": "https://github.com/TsukemonoGit/nostr-bookmark-viewer3",
+    "source": "https://github.com/TsukemonoGit/nostr-bookmark-viewer5",
     "date": "Aug.2025",
     "keywords": [
       "Nostr",

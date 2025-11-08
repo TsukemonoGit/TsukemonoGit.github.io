@@ -1,18 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import '../app.css';
-	//import '@konemono/nostr-web-components';
-	import { browser } from '$app/environment';
-
-	/* 	onMount(() => {
-		if (browser) {
-			// より安全な方法でスクリプトを動的読み込み
-			const script = document.createElement('script');
-			script.type = 'module';
-			script.src = 'https://unpkg.com/@konemono/nostr-web-components';
-			document.head.appendChild(script);
-		}
-	}); */
 </script>
 
 <div class="app">
