@@ -256,10 +256,10 @@
           href={projectUrl(project)}
           target="_blank"
           rel="noopener"
-          class="flex items-center gap-4 p-4 rounded-xl bg-surface border border-border transition-all duration-200 hover:border-primary/30 hover:bg-surface-hover group"
+          class="flex items-center gap-4 p-2 rounded-xl bg-surface border border-border transition-all duration-200 hover:border-primary/30 hover:bg-surface-hover group"
         >
           <div
-            class="w-10 h-10 rounded-lg bg-bg flex items-center justify-center flex-shrink-0 text-sm"
+            class="w-16 h-16 rounded-lg bg-bg flex items-center justify-center flex-shrink-0 text-sm"
           >
             {#if project.Picture}
               <img
